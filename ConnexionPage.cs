@@ -12,9 +12,16 @@ namespace Autofact
 {
     public partial class ConnexionPage : Form
     {
+
         public ConnexionPage()
         {
             InitializeComponent();
+        }
+
+        private void btn_inscription_Click(object sender, EventArgs e)
+        {
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=";
+
         }
     }
 }
