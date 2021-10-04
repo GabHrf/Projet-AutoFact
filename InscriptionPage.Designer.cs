@@ -46,67 +46,70 @@ namespace Autofact
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(370, 53);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(233, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 17);
+            this.label1.Size = new System.Drawing.Size(128, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Inscription";
             // 
             // box_mail
             // 
-            this.box_mail.Location = new System.Drawing.Point(361, 106);
+            this.box_mail.Location = new System.Drawing.Point(280, 93);
             this.box_mail.Name = "box_mail";
-            this.box_mail.Size = new System.Drawing.Size(161, 22);
+            this.box_mail.Size = new System.Drawing.Size(241, 22);
             this.box_mail.TabIndex = 1;
             this.box_mail.TextChanged += new System.EventHandler(this.box_mail_TextChanged);
             // 
             // box_mdp
             // 
-            this.box_mdp.Location = new System.Drawing.Point(360, 273);
+            this.box_mdp.Location = new System.Drawing.Point(280, 251);
             this.box_mdp.Name = "box_mdp";
-            this.box_mdp.Size = new System.Drawing.Size(161, 22);
-            this.box_mdp.TabIndex = 2;
+            this.box_mdp.Size = new System.Drawing.Size(241, 22);
+            this.box_mdp.TabIndex = 4;
+            this.box_mdp.UseSystemPasswordChar = true;
             this.box_mdp.TextChanged += new System.EventHandler(this.box_mdp_TextChanged);
             // 
             // btn_inscription
             // 
-            this.btn_inscription.Location = new System.Drawing.Point(383, 368);
+            this.btn_inscription.Location = new System.Drawing.Point(383, 357);
             this.btn_inscription.Name = "btn_inscription";
             this.btn_inscription.Size = new System.Drawing.Size(138, 26);
-            this.btn_inscription.TabIndex = 3;
+            this.btn_inscription.TabIndex = 6;
             this.btn_inscription.Text = "S\'inscrire";
             this.btn_inscription.UseVisualStyleBackColor = true;
             this.btn_inscription.Click += new System.EventHandler(this.btn_inscription_Click);
             // 
             // box_nom
             // 
-            this.box_nom.Location = new System.Drawing.Point(361, 162);
+            this.box_nom.Location = new System.Drawing.Point(280, 144);
             this.box_nom.Name = "box_nom";
-            this.box_nom.Size = new System.Drawing.Size(161, 22);
-            this.box_nom.TabIndex = 4;
+            this.box_nom.Size = new System.Drawing.Size(241, 22);
+            this.box_nom.TabIndex = 2;
             this.box_nom.TextChanged += new System.EventHandler(this.box_nom_TextChanged);
             // 
             // box_prenom
             // 
-            this.box_prenom.Location = new System.Drawing.Point(362, 220);
+            this.box_prenom.Location = new System.Drawing.Point(280, 202);
             this.box_prenom.Name = "box_prenom";
-            this.box_prenom.Size = new System.Drawing.Size(160, 22);
-            this.box_prenom.TabIndex = 5;
+            this.box_prenom.Size = new System.Drawing.Size(241, 22);
+            this.box_prenom.TabIndex = 3;
             this.box_prenom.TextChanged += new System.EventHandler(this.box_prenom_TextChanged);
             // 
             // box_confmdp
             // 
-            this.box_confmdp.Location = new System.Drawing.Point(360, 320);
+            this.box_confmdp.Location = new System.Drawing.Point(280, 297);
             this.box_confmdp.Name = "box_confmdp";
-            this.box_confmdp.Size = new System.Drawing.Size(161, 22);
-            this.box_confmdp.TabIndex = 6;
+            this.box_confmdp.Size = new System.Drawing.Size(241, 22);
+            this.box_confmdp.TabIndex = 5;
+            this.box_confmdp.UseSystemPasswordChar = true;
             this.box_confmdp.TextChanged += new System.EventHandler(this.box_confmdp_TextChanged);
             // 
             // label_email
             // 
             this.label_email.AutoSize = true;
             this.label_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_email.Location = new System.Drawing.Point(251, 111);
+            this.label_email.Location = new System.Drawing.Point(194, 95);
             this.label_email.Name = "label_email";
             this.label_email.Size = new System.Drawing.Size(51, 20);
             this.label_email.TabIndex = 7;
@@ -115,44 +118,50 @@ namespace Autofact
             // label_nom
             // 
             this.label_nom.AutoSize = true;
-            this.label_nom.Location = new System.Drawing.Point(251, 167);
+            this.label_nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_nom.Location = new System.Drawing.Point(201, 146);
             this.label_nom.Name = "label_nom";
-            this.label_nom.Size = new System.Drawing.Size(37, 17);
+            this.label_nom.Size = new System.Drawing.Size(44, 20);
             this.label_nom.TabIndex = 8;
             this.label_nom.Text = "Nom";
             // 
             // label_prenom
             // 
             this.label_prenom.AutoSize = true;
-            this.label_prenom.Location = new System.Drawing.Point(251, 225);
+            this.label_prenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_prenom.Location = new System.Drawing.Point(178, 202);
             this.label_prenom.Name = "label_prenom";
-            this.label_prenom.Size = new System.Drawing.Size(57, 17);
+            this.label_prenom.Size = new System.Drawing.Size(67, 20);
             this.label_prenom.TabIndex = 9;
             this.label_prenom.Text = "Prénom";
             // 
             // label_mdp
             // 
             this.label_mdp.AutoSize = true;
-            this.label_mdp.Location = new System.Drawing.Point(251, 278);
+            this.label_mdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_mdp.Location = new System.Drawing.Point(135, 251);
             this.label_mdp.Name = "label_mdp";
-            this.label_mdp.Size = new System.Drawing.Size(93, 17);
+            this.label_mdp.Size = new System.Drawing.Size(110, 20);
             this.label_mdp.TabIndex = 10;
             this.label_mdp.Text = "Mot de passe";
             // 
             // label_confmdp
             // 
             this.label_confmdp.AutoSize = true;
-            this.label_confmdp.Location = new System.Drawing.Point(148, 325);
+            this.label_confmdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_confmdp.Location = new System.Drawing.Point(12, 297);
             this.label_confmdp.Name = "label_confmdp";
-            this.label_confmdp.Size = new System.Drawing.Size(196, 17);
+            this.label_confmdp.Size = new System.Drawing.Size(233, 20);
             this.label_confmdp.TabIndex = 11;
             this.label_confmdp.Text = "Confirmation de Mot de passe";
+            this.label_confmdp.UseMnemonic = false;
+            this.label_confmdp.Click += new System.EventHandler(this.label_confmdp_Click);
             // 
             // InscriptionPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 507);
+            this.ClientSize = new System.Drawing.Size(592, 411);
             this.Controls.Add(this.label_confmdp);
             this.Controls.Add(this.label_mdp);
             this.Controls.Add(this.label_prenom);

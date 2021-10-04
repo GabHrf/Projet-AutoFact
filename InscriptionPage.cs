@@ -18,13 +18,8 @@ namespace Autofact
             MySqlConnection conn = new MySqlConnection(connectionString);
             
 
-            string insert = "INSERT INTO `utilisateur`(`NOM`, `PRENOM`, `MAIL`, `MDP`) VALUES (@nom,@prenom,@email,@mdp)";
+            string insert = "INSERT INTO `utilisateur`(`NOM`, `PRENOM`, `MAIL`, `MDP`) VALUES ('"+box_nom.Text+"','"+box_prenom.Text+"','"+box_mail.Text+"','"+box_mdp.Text+"')";
             MySqlCommand cmd = new MySqlCommand(insert, conn);
-
-            cmd.Parameters.AddWithValue("@nom", box_nom.Text);
-            cmd.Parameters.AddWithValue("@prenom", box_prenom.Text);
-            cmd.Parameters.AddWithValue("@email", box_mail.Text);
-            cmd.Parameters.AddWithValue("@mdp", box_mdp.Text);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -51,6 +46,11 @@ namespace Autofact
         }
 
         private void box_confmdp_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_confmdp_Click(object sender, EventArgs e)
         {
 
         }
