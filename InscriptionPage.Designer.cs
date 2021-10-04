@@ -29,7 +29,7 @@ namespace Autofact
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelInscription = new System.Windows.Forms.Label();
             this.box_mail = new System.Windows.Forms.TextBox();
             this.box_mdp = new System.Windows.Forms.TextBox();
             this.btn_inscription = new System.Windows.Forms.Button();
@@ -41,17 +41,18 @@ namespace Autofact
             this.label_prenom = new System.Windows.Forms.Label();
             this.label_mdp = new System.Windows.Forms.Label();
             this.label_confmdp = new System.Windows.Forms.Label();
+            this.btn_connexion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // labelInscription
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(233, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Inscription";
+            this.labelInscription.AutoSize = true;
+            this.labelInscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInscription.Location = new System.Drawing.Point(233, 29);
+            this.labelInscription.Name = "labelInscription";
+            this.labelInscription.Size = new System.Drawing.Size(128, 29);
+            this.labelInscription.TabIndex = 0;
+            this.labelInscription.Text = "Inscription";
             // 
             // box_mail
             // 
@@ -157,11 +158,22 @@ namespace Autofact
             this.label_confmdp.UseMnemonic = false;
             this.label_confmdp.Click += new System.EventHandler(this.label_confmdp_Click);
             // 
+            // btn_connexion
+            // 
+            this.btn_connexion.Location = new System.Drawing.Point(39, 357);
+            this.btn_connexion.Name = "btn_connexion";
+            this.btn_connexion.Size = new System.Drawing.Size(138, 26);
+            this.btn_connexion.TabIndex = 12;
+            this.btn_connexion.Text = "Se Connecter";
+            this.btn_connexion.UseVisualStyleBackColor = true;
+            this.btn_connexion.Click += new System.EventHandler(this.btn_connexion_Click);
+            // 
             // InscriptionPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 411);
+            this.ClientSize = new System.Drawing.Size(582, 403);
+            this.Controls.Add(this.btn_connexion);
             this.Controls.Add(this.label_confmdp);
             this.Controls.Add(this.label_mdp);
             this.Controls.Add(this.label_prenom);
@@ -173,7 +185,7 @@ namespace Autofact
             this.Controls.Add(this.btn_inscription);
             this.Controls.Add(this.box_mdp);
             this.Controls.Add(this.box_mail);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelInscription);
             this.Name = "InscriptionPage";
             this.Text = "ConnexionPage";
             this.ResumeLayout(false);
@@ -183,7 +195,7 @@ namespace Autofact
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelInscription;
         private System.Windows.Forms.TextBox box_mail;
         private System.Windows.Forms.TextBox box_mdp;
         private System.Windows.Forms.Button btn_inscription;
@@ -195,5 +207,6 @@ namespace Autofact
         private System.Windows.Forms.Label label_prenom;
         private System.Windows.Forms.Label label_mdp;
         private System.Windows.Forms.Label label_confmdp;
+        private System.Windows.Forms.Button btn_connexion;
     }
 }

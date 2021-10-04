@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace Autofact
 {
-    public partial class Form1 : Form
+    public partial class ConnexionPage : Form
     {
-        public Form1()
+        public ConnexionPage()
         {
             InitializeComponent();
+        }
+
+        private void btn_inscription_Click(object sender, EventArgs e)
+        {
+            Hide();
+            InscriptionPage x = new InscriptionPage();
+            x.Show();
         }
     }
 }

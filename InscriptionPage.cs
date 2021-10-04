@@ -54,5 +54,12 @@ namespace Autofact
         {
 
         }
+
+        private void btn_connexion_Click(object sender, EventArgs e)
+        {
+            Hide();
+            ConnexionPage x = new ConnexionPage();
+            x.Show();
+        }
     }
 }
