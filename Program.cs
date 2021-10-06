@@ -16,7 +16,7 @@ namespace Autofact
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InscriptionPage());
+            Application.Run(new ConnexionPage());
 
             //TEST
         }
