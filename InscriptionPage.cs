@@ -14,6 +14,7 @@ namespace Autofact
 
         private void btn_inscription_Click(object sender, EventArgs e)
         {
+
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
             
@@ -37,6 +38,9 @@ namespace Autofact
                         MySqlCommand cmd = new MySqlCommand(insert, conn);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Vous venez de vous inscrire");
+                        Hide();
+                        ConnexionPage x = new ConnexionPage();
+                        x.Show();
                     }
                 }
                 else
