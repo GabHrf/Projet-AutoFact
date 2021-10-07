@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Autofact
@@ -17,8 +18,11 @@ namespace Autofact
 
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
+
             
-            if(box_mail.Text != string.Empty || box_nom.Text != string.Empty || box_prenom.Text != string.Empty || box_mdp.Text != string.Empty || box_confmdp.Text != string.Empty)
+
+
+            if (box_mail.Text != string.Empty || box_nom.Text != string.Empty || box_prenom.Text != string.Empty || box_mdp.Text != string.Empty || box_confmdp.Text != string.Empty)
             {
                 if(box_mdp.Text == box_confmdp.Text)
                 {
@@ -51,7 +55,7 @@ namespace Autofact
             }
             else
             {
-                MessageBox.Show("Veuillez remplir toutes les cases !");
+                MessageBox.Show("Veuillez remplir toutes les cases et/ou renseignez un email valide !");
             }
 
             

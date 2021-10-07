@@ -62,7 +62,7 @@
             this.btn_inscription.Location = new System.Drawing.Point(47, 322);
             this.btn_inscription.Name = "btn_inscription";
             this.btn_inscription.Size = new System.Drawing.Size(138, 26);
-            this.btn_inscription.TabIndex = 18;
+            this.btn_inscription.TabIndex = 4;
             this.btn_inscription.Text = "S\'inscrire";
             this.btn_inscription.UseVisualStyleBackColor = true;
             this.btn_inscription.Click += new System.EventHandler(this.btn_inscription_Click);
@@ -97,7 +97,7 @@
             this.btn_connexion.Location = new System.Drawing.Point(383, 322);
             this.btn_connexion.Name = "btn_connexion";
             this.btn_connexion.Size = new System.Drawing.Size(138, 26);
-            this.btn_connexion.TabIndex = 23;
+            this.btn_connexion.TabIndex = 3;
             this.btn_connexion.Text = "Se connecter";
             this.btn_connexion.UseVisualStyleBackColor = true;
             // 
