@@ -89,15 +89,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accueil.cs" />
+    <Compile Include="Accueil.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
-    <Compile Include="InscriptionPage.cs" />
+    <Compile Include="InscriptionPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="InscriptionPage.Designer.cs">
       <DependentUpon>InscriptionPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConnexionPage.cs" />
+    <Compile Include="ConnexionPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ConnexionPage.Designer.cs">
       <DependentUpon>ConnexionPage.cs</DependentUpon>
     </Compile>

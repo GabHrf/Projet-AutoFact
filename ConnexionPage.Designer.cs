@@ -100,6 +100,7 @@
             this.btn_connexion.TabIndex = 3;
             this.btn_connexion.Text = "Se connecter";
             this.btn_connexion.UseVisualStyleBackColor = true;
+            this.btn_connexion.Click += new System.EventHandler(this.btn_connexion_Click);
             // 
             // ConnexionPage
             // 

@@ -33,7 +33,7 @@ namespace Autofact
                     if (rd.Read())
                     {
                         rd.Close();
-                        MessageBox.Show("Ce mail a déjà été utilisé !");
+                        MessageBox.Show("Ce mail a déjà été utilisé !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -45,17 +45,16 @@ namespace Autofact
                         Hide();
                         ConnexionPage x = new ConnexionPage();
                         x.Show();
-                        Close();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Les deux mots de passes doivent se correspondre !");
+                    MessageBox.Show("Les deux mots de passes doivent se correspondre !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Veuillez remplir toutes les cases et/ou renseignez un email valide !");
+                MessageBox.Show("Veuillez remplir toutes les cases et/ou renseignez un email valide !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             
