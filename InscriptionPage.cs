@@ -2,6 +2,7 @@
 using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using BCrypt.Net;
 
 namespace Autofact
 {
@@ -15,16 +16,30 @@ namespace Autofact
 
         private void btn_inscription_Click(object sender, EventArgs e)
         {
-
+            //Connexion BDD
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
-
             
+
+            //Hash mdp + Salt + verif pass
+            string password = box_mdp.Text;
+            string mySalt = BCrypt.Net.BCrypt.GenerateSalt();
+            string myHash = BCrypt.Net.BCrypt.HashPassword(password, mySalt);
+
+            bool PassVerify = BCrypt.Net.BCrypt.Verify(password, myHash);
+
+
+            //Hash conf mdp + Salt + verif conf pass
+            string Confpassword = box_confmdp.Text;
+            string ConfMySalt = BCrypt.Net.BCrypt.GenerateSalt();
+            string ConfMyHash = BCrypt.Net.BCrypt.HashPassword(Confpassword, ConfMySalt);
+
+            bool ConfPassVerify = BCrypt.Net.BCrypt.Verify(Confpassword, ConfMyHash);
 
 
             if (box_mail.Text != string.Empty || box_nom.Text != string.Empty || box_prenom.Text != string.Empty || box_mdp.Text != string.Empty || box_confmdp.Text != string.Empty)
             {
-                if(box_mdp.Text == box_confmdp.Text)
+                if(PassVerify == true || ConfPassVerify == true)
                 {
                     conn.Open();
                     string select = "SELECT * FROM `utilisateur` WHERE `MAIL`= '" + box_mail.Text + "'";
@@ -38,7 +53,7 @@ namespace Autofact
                     else
                     {
                         rd.Close();
-                        string insert = "INSERT INTO `utilisateur`(`NOM`, `PRENOM`, `MAIL`, `MDP`) VALUES ('" + box_nom.Text + "','" + box_prenom.Text + "','" + box_mail.Text + "','" + box_mdp.Text + "')";
+                        string insert = "INSERT INTO `utilisateur`(`NOM`, `PRENOM`, `MAIL`, `MDP`) VALUES ('" + box_nom.Text + "','" + box_prenom.Text + "','" + box_mail.Text + "','" + myHash + "')";
                         MySqlCommand cmd = new MySqlCommand(insert, conn);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Vous venez de vous inscrire");
