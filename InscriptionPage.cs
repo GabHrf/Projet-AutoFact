@@ -41,6 +41,7 @@ namespace Autofact
                         Hide();
                         ConnexionPage x = new ConnexionPage();
                         x.Show();
+                        Close();
                     }
                 }
                 else
