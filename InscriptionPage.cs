@@ -21,25 +21,24 @@ namespace Autofact
             MySqlConnection conn = new MySqlConnection(connectionString);
             
 
-            //Hash mdp + Salt + verif pass
+            //Hash mdp + Salt
             string password = box_mdp.Text;
             string mySalt = BCrypt.Net.BCrypt.GenerateSalt();
             string myHash = BCrypt.Net.BCrypt.HashPassword(password, mySalt);
 
-            bool PassVerify = BCrypt.Net.BCrypt.Verify(password, myHash);
+            bool verifmdp = BCrypt.Net.BCrypt.Verify(password, myHash);
 
 
-            //Hash conf mdp + Salt + verif conf pass
+            //Hash conf mdp + Salt
             string Confpassword = box_confmdp.Text;
             string ConfMySalt = BCrypt.Net.BCrypt.GenerateSalt();
-            string ConfMyHash = BCrypt.Net.BCrypt.HashPassword(Confpassword, ConfMySalt);
+            string ConfmyHash = BCrypt.Net.BCrypt.HashPassword(Confpassword, ConfMySalt);
 
-            bool ConfPassVerify = BCrypt.Net.BCrypt.Verify(Confpassword, ConfMyHash);
-
+            bool verifconfmdp = BCrypt.Net.BCrypt.Verify(Confpassword, ConfmyHash);
 
             if (box_mail.Text != string.Empty || box_nom.Text != string.Empty || box_prenom.Text != string.Empty || box_mdp.Text != string.Empty || box_confmdp.Text != string.Empty)
             {
-                if(PassVerify == true || ConfPassVerify == true)
+                if(verifmdp == verifconfmdp)
                 {
                     conn.Open();
                     string select = "SELECT * FROM `utilisateur` WHERE `MAIL`= '" + box_mail.Text + "'";
