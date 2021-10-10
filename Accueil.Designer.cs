@@ -36,7 +36,7 @@ namespace Autofact
             // 
             // btn_clients
             // 
-            this.btn_clients.Location = new System.Drawing.Point(59, 75);
+            this.btn_clients.Location = new System.Drawing.Point(564, 83);
             this.btn_clients.Name = "btn_clients";
             this.btn_clients.Size = new System.Drawing.Size(182, 42);
             this.btn_clients.TabIndex = 0;
@@ -45,7 +45,7 @@ namespace Autofact
             // 
             // btn_profil
             // 
-            this.btn_profil.Location = new System.Drawing.Point(59, 199);
+            this.btn_profil.Location = new System.Drawing.Point(484, 203);
             this.btn_profil.Name = "btn_profil";
             this.btn_profil.Size = new System.Drawing.Size(182, 42);
             this.btn_profil.TabIndex = 1;
@@ -54,12 +54,13 @@ namespace Autofact
             // 
             // btn_deconnexion
             // 
-            this.btn_deconnexion.Location = new System.Drawing.Point(59, 305);
+            this.btn_deconnexion.Location = new System.Drawing.Point(474, 358);
             this.btn_deconnexion.Name = "btn_deconnexion";
             this.btn_deconnexion.Size = new System.Drawing.Size(182, 42);
             this.btn_deconnexion.TabIndex = 2;
             this.btn_deconnexion.Text = "Déconnexion";
             this.btn_deconnexion.UseVisualStyleBackColor = true;
+            this.btn_deconnexion.Click += new System.EventHandler(this.btn_deconnexion_Click);
             // 
             // Accueil
             // 

@@ -48,7 +48,7 @@ namespace Autofact
             // 
             this.labelInscription.AutoSize = true;
             this.labelInscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInscription.Location = new System.Drawing.Point(233, 29);
+            this.labelInscription.Location = new System.Drawing.Point(377, 42);
             this.labelInscription.Name = "labelInscription";
             this.labelInscription.Size = new System.Drawing.Size(128, 29);
             this.labelInscription.TabIndex = 0;
@@ -56,24 +56,24 @@ namespace Autofact
             // 
             // box_mail
             // 
-            this.box_mail.Location = new System.Drawing.Point(280, 93);
+            this.box_mail.Location = new System.Drawing.Point(443, 122);
             this.box_mail.Name = "box_mail";
-            this.box_mail.Size = new System.Drawing.Size(241, 22);
+            this.box_mail.Size = new System.Drawing.Size(273, 22);
             this.box_mail.TabIndex = 1;
             this.box_mail.TextChanged += new System.EventHandler(this.box_mail_TextChanged);
             // 
             // box_mdp
             // 
-            this.box_mdp.Location = new System.Drawing.Point(280, 251);
+            this.box_mdp.Location = new System.Drawing.Point(443, 324);
             this.box_mdp.Name = "box_mdp";
-            this.box_mdp.Size = new System.Drawing.Size(241, 22);
+            this.box_mdp.Size = new System.Drawing.Size(273, 22);
             this.box_mdp.TabIndex = 4;
             this.box_mdp.UseSystemPasswordChar = true;
             this.box_mdp.TextChanged += new System.EventHandler(this.box_mdp_TextChanged);
             // 
             // btn_inscription
             // 
-            this.btn_inscription.Location = new System.Drawing.Point(383, 357);
+            this.btn_inscription.Location = new System.Drawing.Point(568, 465);
             this.btn_inscription.Name = "btn_inscription";
             this.btn_inscription.Size = new System.Drawing.Size(138, 26);
             this.btn_inscription.TabIndex = 6;
@@ -83,25 +83,25 @@ namespace Autofact
             // 
             // box_nom
             // 
-            this.box_nom.Location = new System.Drawing.Point(280, 144);
+            this.box_nom.Location = new System.Drawing.Point(443, 187);
             this.box_nom.Name = "box_nom";
-            this.box_nom.Size = new System.Drawing.Size(241, 22);
+            this.box_nom.Size = new System.Drawing.Size(273, 22);
             this.box_nom.TabIndex = 2;
             this.box_nom.TextChanged += new System.EventHandler(this.box_nom_TextChanged);
             // 
             // box_prenom
             // 
-            this.box_prenom.Location = new System.Drawing.Point(280, 202);
+            this.box_prenom.Location = new System.Drawing.Point(443, 250);
             this.box_prenom.Name = "box_prenom";
-            this.box_prenom.Size = new System.Drawing.Size(241, 22);
+            this.box_prenom.Size = new System.Drawing.Size(273, 22);
             this.box_prenom.TabIndex = 3;
             this.box_prenom.TextChanged += new System.EventHandler(this.box_prenom_TextChanged);
             // 
             // box_confmdp
             // 
-            this.box_confmdp.Location = new System.Drawing.Point(280, 297);
+            this.box_confmdp.Location = new System.Drawing.Point(443, 389);
             this.box_confmdp.Name = "box_confmdp";
-            this.box_confmdp.Size = new System.Drawing.Size(241, 22);
+            this.box_confmdp.Size = new System.Drawing.Size(273, 22);
             this.box_confmdp.TabIndex = 5;
             this.box_confmdp.UseSystemPasswordChar = true;
             this.box_confmdp.TextChanged += new System.EventHandler(this.box_confmdp_TextChanged);
@@ -110,7 +110,7 @@ namespace Autofact
             // 
             this.label_email.AutoSize = true;
             this.label_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_email.Location = new System.Drawing.Point(194, 95);
+            this.label_email.Location = new System.Drawing.Point(350, 122);
             this.label_email.Name = "label_email";
             this.label_email.Size = new System.Drawing.Size(51, 20);
             this.label_email.TabIndex = 7;
@@ -120,7 +120,7 @@ namespace Autofact
             // 
             this.label_nom.AutoSize = true;
             this.label_nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_nom.Location = new System.Drawing.Point(201, 146);
+            this.label_nom.Location = new System.Drawing.Point(357, 187);
             this.label_nom.Name = "label_nom";
             this.label_nom.Size = new System.Drawing.Size(44, 20);
             this.label_nom.TabIndex = 8;
@@ -130,7 +130,7 @@ namespace Autofact
             // 
             this.label_prenom.AutoSize = true;
             this.label_prenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_prenom.Location = new System.Drawing.Point(178, 202);
+            this.label_prenom.Location = new System.Drawing.Point(334, 250);
             this.label_prenom.Name = "label_prenom";
             this.label_prenom.Size = new System.Drawing.Size(67, 20);
             this.label_prenom.TabIndex = 9;
@@ -140,7 +140,7 @@ namespace Autofact
             // 
             this.label_mdp.AutoSize = true;
             this.label_mdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_mdp.Location = new System.Drawing.Point(135, 251);
+            this.label_mdp.Location = new System.Drawing.Point(291, 324);
             this.label_mdp.Name = "label_mdp";
             this.label_mdp.Size = new System.Drawing.Size(110, 20);
             this.label_mdp.TabIndex = 10;
@@ -150,7 +150,7 @@ namespace Autofact
             // 
             this.label_confmdp.AutoSize = true;
             this.label_confmdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_confmdp.Location = new System.Drawing.Point(12, 297);
+            this.label_confmdp.Location = new System.Drawing.Point(168, 389);
             this.label_confmdp.Name = "label_confmdp";
             this.label_confmdp.Size = new System.Drawing.Size(233, 20);
             this.label_confmdp.TabIndex = 11;
@@ -160,7 +160,7 @@ namespace Autofact
             // 
             // btn_connexion
             // 
-            this.btn_connexion.Location = new System.Drawing.Point(39, 357);
+            this.btn_connexion.Location = new System.Drawing.Point(288, 465);
             this.btn_connexion.Name = "btn_connexion";
             this.btn_connexion.Size = new System.Drawing.Size(138, 26);
             this.btn_connexion.TabIndex = 12;
@@ -172,7 +172,7 @@ namespace Autofact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 403);
+            this.ClientSize = new System.Drawing.Size(943, 525);
             this.Controls.Add(this.btn_connexion);
             this.Controls.Add(this.label_confmdp);
             this.Controls.Add(this.label_mdp);

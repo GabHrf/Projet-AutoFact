@@ -35,13 +35,14 @@
             this.box_mail = new System.Windows.Forms.TextBox();
             this.labelConnexion = new System.Windows.Forms.Label();
             this.btn_connexion = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label_mdp
             // 
             this.label_mdp.AutoSize = true;
             this.label_mdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_mdp.Location = new System.Drawing.Point(135, 160);
+            this.label_mdp.Location = new System.Drawing.Point(372, 233);
             this.label_mdp.Name = "label_mdp";
             this.label_mdp.Size = new System.Drawing.Size(110, 20);
             this.label_mdp.TabIndex = 22;
@@ -51,7 +52,7 @@
             // 
             this.label_email.AutoSize = true;
             this.label_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_email.Location = new System.Drawing.Point(194, 88);
+            this.label_email.Location = new System.Drawing.Point(402, 134);
             this.label_email.Name = "label_email";
             this.label_email.Size = new System.Drawing.Size(51, 20);
             this.label_email.TabIndex = 19;
@@ -59,7 +60,7 @@
             // 
             // btn_inscription
             // 
-            this.btn_inscription.Location = new System.Drawing.Point(47, 322);
+            this.btn_inscription.Location = new System.Drawing.Point(291, 361);
             this.btn_inscription.Name = "btn_inscription";
             this.btn_inscription.Size = new System.Drawing.Size(138, 26);
             this.btn_inscription.TabIndex = 4;
@@ -69,24 +70,24 @@
             // 
             // box_mdp
             // 
-            this.box_mdp.Location = new System.Drawing.Point(280, 160);
+            this.box_mdp.Location = new System.Drawing.Point(291, 272);
             this.box_mdp.Name = "box_mdp";
-            this.box_mdp.Size = new System.Drawing.Size(241, 22);
+            this.box_mdp.Size = new System.Drawing.Size(303, 22);
             this.box_mdp.TabIndex = 2;
             this.box_mdp.UseSystemPasswordChar = true;
             // 
             // box_mail
             // 
-            this.box_mail.Location = new System.Drawing.Point(280, 86);
+            this.box_mail.Location = new System.Drawing.Point(291, 179);
             this.box_mail.Name = "box_mail";
-            this.box_mail.Size = new System.Drawing.Size(241, 22);
+            this.box_mail.Size = new System.Drawing.Size(303, 22);
             this.box_mail.TabIndex = 1;
             // 
             // labelConnexion
             // 
             this.labelConnexion.AutoSize = true;
             this.labelConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConnexion.Location = new System.Drawing.Point(233, 22);
+            this.labelConnexion.Location = new System.Drawing.Point(371, 59);
             this.labelConnexion.Name = "labelConnexion";
             this.labelConnexion.Size = new System.Drawing.Size(133, 29);
             this.labelConnexion.TabIndex = 12;
@@ -94,7 +95,7 @@
             // 
             // btn_connexion
             // 
-            this.btn_connexion.Location = new System.Drawing.Point(383, 322);
+            this.btn_connexion.Location = new System.Drawing.Point(456, 361);
             this.btn_connexion.Name = "btn_connexion";
             this.btn_connexion.Size = new System.Drawing.Size(138, 26);
             this.btn_connexion.TabIndex = 3;
@@ -102,11 +103,19 @@
             this.btn_connexion.UseVisualStyleBackColor = true;
             this.btn_connexion.Click += new System.EventHandler(this.btn_connexion_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Location = new System.Drawing.Point(0, 0);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(100, 23);
+            this.linkLabel1.TabIndex = 0;
+            // 
             // ConnexionPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 403);
+            this.ClientSize = new System.Drawing.Size(875, 512);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btn_connexion);
             this.Controls.Add(this.label_mdp);
             this.Controls.Add(this.label_email);
@@ -129,6 +138,7 @@
         private System.Windows.Forms.TextBox box_mail;
         private System.Windows.Forms.Label labelConnexion;
         private System.Windows.Forms.Button btn_connexion;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

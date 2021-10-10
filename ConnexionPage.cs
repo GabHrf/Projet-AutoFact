@@ -58,6 +58,6 @@ namespace Autofact
                 MessageBox.Show("Veuillez remplir toutes les cases et/ou renseignez un email valide !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        }
+    }
     }
 

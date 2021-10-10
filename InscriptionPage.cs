@@ -72,7 +72,6 @@ namespace Autofact
             }
 
             
-            conn.Close();
         }
 
         private void box_nom_TextChanged(object sender, EventArgs e)
