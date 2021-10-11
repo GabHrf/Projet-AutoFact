@@ -196,7 +196,6 @@ namespace Autofact
         #endregion
 
         private System.Windows.Forms.Label labelInscription;
-        private System.Windows.Forms.TextBox box_mail;
         private System.Windows.Forms.TextBox box_mdp;
         private System.Windows.Forms.Button btn_inscription;
         private System.Windows.Forms.TextBox box_nom;
@@ -208,5 +207,6 @@ namespace Autofact
         private System.Windows.Forms.Label label_mdp;
         private System.Windows.Forms.Label label_confmdp;
         private System.Windows.Forms.Button btn_connexion;
+        private System.Windows.Forms.TextBox box_mail;
     }
 }

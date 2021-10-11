@@ -29,14 +29,20 @@ namespace Autofact
 
         private void btn_connexion_Click(object sender, EventArgs e)
         {
+            
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
 
+            string password = box_mdp.Text;
+            string mySalt = BCrypt.Net.BCrypt.GenerateSalt();
+            string myHash = BCrypt.Net.BCrypt.HashPassword(password, mySalt);
 
-            if (box_mail.Text != string.Empty || box_mdp.Text != string.Empty)
+            bool verifmdp = BCrypt.Net.BCrypt.Verify(password, myHash);
+
+            if (box_mail.Text != string.Empty && box_mdp.Text != string.Empty)
             {
                 conn.Open();
-                string select = "SELECT `MAIL`, `MDP` FROM `utilisateur` WHERE `MAIL`= '"+box_mail.Text+"' AND `MDP`= '"+box_mdp.Text+"'";
+                string select = "SELECT `MAIL`, `MDP` FROM `utilisateur` WHERE `MAIL`= '"+box_mail.Text+"' AND `MDP`= '"+verifmdp+"'";
                 MySqlCommand read = new MySqlCommand(select, conn);
                 MySqlDataReader rd = read.ExecuteReader();
                 if (rd.Read())

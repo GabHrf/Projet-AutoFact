@@ -42,10 +42,11 @@ namespace Autofact
             this.btn_clients.TabIndex = 0;
             this.btn_clients.Text = "Clients";
             this.btn_clients.UseVisualStyleBackColor = true;
+            this.btn_clients.Click += new System.EventHandler(this.btn_clients_Click);
             // 
             // btn_profil
             // 
-            this.btn_profil.Location = new System.Drawing.Point(484, 203);
+            this.btn_profil.Location = new System.Drawing.Point(359, 222);
             this.btn_profil.Name = "btn_profil";
             this.btn_profil.Size = new System.Drawing.Size(182, 42);
             this.btn_profil.TabIndex = 1;

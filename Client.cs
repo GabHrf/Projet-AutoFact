@@ -11,11 +11,16 @@ using MySql.Data.MySqlClient;
 
 namespace Autofact
 {
-    public partial class Accueil : Form
+    public partial class Client : Form
     {
-        public Accueil()
+        public Client()
         {
             InitializeComponent();
+        }
+
+        private void Client_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void btn_deconnexion_Click(object sender, EventArgs e)
@@ -31,10 +36,23 @@ namespace Autofact
             x.Show();
         }
 
-        private void btn_clients_Click(object sender, EventArgs e)
+        private void btn_actualiserclient_Click(object sender, EventArgs e)
         {
-            Hide();
-            Client x = new Client();
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            conn.Open();
+            MySqlDataAdapter sqlDa = new MySqlDataAdapter("SELECT `IDCLIENT`, `NOM`, `PRENOM`, `ADRESSE` FROM `clients`", conn);
+            DataTable dtbl = new DataTable();
+            sqlDa.Fill(dtbl);
+
+            dgvclient.DataSource = dtbl;
+
+        }
+
+        private void btn_ajoutclie_Click(object sender, EventArgs e)
+        {
+            AjoutClients x = new AjoutClients();
             x.Show();
         }
     }
