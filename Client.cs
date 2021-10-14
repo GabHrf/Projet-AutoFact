@@ -107,5 +107,63 @@ namespace Autofact
             box_prenom.Text = selectedRow.Cells[2].Value.ToString();
             box_adresse.Text = selectedRow.Cells[3].Value.ToString();
         }
+
+        private void btn_modifclie_Click(object sender, EventArgs e)
+        {
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            if (ID != 0)
+            {
+                MySqlCommand cmd = new MySqlCommand("UPDATE `clients` SET `NOM`= '"+box_nom.Text+"',`PRENOM`= '"+box_prenom.Text+"',`ADRESSE`='"+box_adresse.Text+"' WHERE `IDCLIENT` = @id", conn);
+                conn.Open();
+                cmd.Parameters.AddWithValue("@id", ID);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Client modifier!");
+                displayData();
+                ClearData();
+            }
+            else
+            {
+                MessageBox.Show("Selectionnez un client à modifier");
+            }
+        }
+
+        private void pictureActualiser_Click(object sender, EventArgs e)
+        {
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            conn.Open();
+            MySqlDataAdapter sqlDa = new MySqlDataAdapter("SELECT `IDCLIENT`, `NOM`, `PRENOM`, `ADRESSE` FROM `clients`", conn);
+            DataTable dtbl = new DataTable();
+            sqlDa.Fill(dtbl);
+
+            dgvclient.DataSource = dtbl;
+            ClearData();
+        }
+
+        private void pictureModifier_Click(object sender, EventArgs e)
+        {
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            if (ID != 0)
+            {
+                MySqlCommand cmd = new MySqlCommand("UPDATE `clients` SET `NOM`= '" + box_nom.Text + "',`PRENOM`= '" + box_prenom.Text + "',`ADRESSE`='" + box_adresse.Text + "' WHERE `IDCLIENT` = @id", conn);
+                conn.Open();
+                cmd.Parameters.AddWithValue("@id", ID);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Client modifier!");
+                displayData();
+                ClearData();
+            }
+            else
+            {
+                MessageBox.Show("Selectionnez un client à modifier");
+            }
+        }
     }
 }

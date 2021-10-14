@@ -37,14 +37,22 @@ namespace Autofact
             this.nomclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenomclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adresseclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_actualiserclient = new System.Windows.Forms.Button();
             this.btn_ajoutclie = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_modifclie = new System.Windows.Forms.Button();
             this.btn_suppclie = new System.Windows.Forms.Button();
             this.box_nom = new System.Windows.Forms.TextBox();
             this.box_prenom = new System.Windows.Forms.TextBox();
             this.box_adresse = new System.Windows.Forms.TextBox();
+            this.label_nom = new System.Windows.Forms.Label();
+            this.label_prenom = new System.Windows.Forms.Label();
+            this.label_adresse = new System.Windows.Forms.Label();
+            this.label_client = new System.Windows.Forms.Label();
+            this.btn_actualiserclient = new System.Windows.Forms.Button();
+            this.pictureModifier = new System.Windows.Forms.PictureBox();
+            this.pictureActualiser = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureModifier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureActualiser)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_deconnexion
@@ -83,11 +91,11 @@ namespace Autofact
             this.nomclie,
             this.prenomclie,
             this.adresseclie});
-            this.dgvclient.Location = new System.Drawing.Point(204, 153);
+            this.dgvclient.Location = new System.Drawing.Point(227, 261);
             this.dgvclient.Name = "dgvclient";
             this.dgvclient.RowHeadersWidth = 51;
             this.dgvclient.RowTemplate.Height = 24;
-            this.dgvclient.Size = new System.Drawing.Size(711, 350);
+            this.dgvclient.Size = new System.Drawing.Size(882, 362);
             this.dgvclient.TabIndex = 3;
             this.dgvclient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvclient_CellClick);
             // 
@@ -123,40 +131,31 @@ namespace Autofact
             this.adresseclie.Name = "adresseclie";
             this.adresseclie.Width = 125;
             // 
-            // btn_actualiserclient
-            // 
-            this.btn_actualiserclient.Location = new System.Drawing.Point(897, 93);
-            this.btn_actualiserclient.Name = "btn_actualiserclient";
-            this.btn_actualiserclient.Size = new System.Drawing.Size(133, 37);
-            this.btn_actualiserclient.TabIndex = 4;
-            this.btn_actualiserclient.Text = "Actualiser";
-            this.btn_actualiserclient.UseVisualStyleBackColor = true;
-            this.btn_actualiserclient.Click += new System.EventHandler(this.btn_actualiserclient_Click);
-            // 
             // btn_ajoutclie
             // 
-            this.btn_ajoutclie.Location = new System.Drawing.Point(693, 93);
+            this.btn_ajoutclie.Location = new System.Drawing.Point(699, 208);
             this.btn_ajoutclie.Name = "btn_ajoutclie";
-            this.btn_ajoutclie.Size = new System.Drawing.Size(158, 35);
+            this.btn_ajoutclie.Size = new System.Drawing.Size(133, 35);
             this.btn_ajoutclie.TabIndex = 5;
             this.btn_ajoutclie.Text = "Ajouter un client";
             this.btn_ajoutclie.UseVisualStyleBackColor = true;
             this.btn_ajoutclie.Click += new System.EventHandler(this.btn_ajoutclie_Click);
             // 
-            // button1
+            // btn_modifclie
             // 
-            this.button1.Location = new System.Drawing.Point(940, 253);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 34);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_modifclie.Location = new System.Drawing.Point(856, 206);
+            this.btn_modifclie.Name = "btn_modifclie";
+            this.btn_modifclie.Size = new System.Drawing.Size(93, 37);
+            this.btn_modifclie.TabIndex = 6;
+            this.btn_modifclie.Text = "Modifier";
+            this.btn_modifclie.UseVisualStyleBackColor = true;
+            this.btn_modifclie.Click += new System.EventHandler(this.btn_modifclie_Click);
             // 
             // btn_suppclie
             // 
-            this.btn_suppclie.Location = new System.Drawing.Point(554, 95);
+            this.btn_suppclie.Location = new System.Drawing.Point(564, 208);
             this.btn_suppclie.Name = "btn_suppclie";
-            this.btn_suppclie.Size = new System.Drawing.Size(104, 35);
+            this.btn_suppclie.Size = new System.Drawing.Size(104, 36);
             this.btn_suppclie.TabIndex = 7;
             this.btn_suppclie.Text = "Supprimer";
             this.btn_suppclie.UseVisualStyleBackColor = true;
@@ -164,35 +163,112 @@ namespace Autofact
             // 
             // box_nom
             // 
-            this.box_nom.Location = new System.Drawing.Point(372, 20);
+            this.box_nom.Location = new System.Drawing.Point(471, 115);
             this.box_nom.Name = "box_nom";
             this.box_nom.Size = new System.Drawing.Size(117, 22);
             this.box_nom.TabIndex = 8;
             // 
             // box_prenom
             // 
-            this.box_prenom.Location = new System.Drawing.Point(372, 63);
+            this.box_prenom.Location = new System.Drawing.Point(733, 119);
             this.box_prenom.Name = "box_prenom";
             this.box_prenom.Size = new System.Drawing.Size(117, 22);
             this.box_prenom.TabIndex = 9;
             // 
             // box_adresse
             // 
-            this.box_adresse.Location = new System.Drawing.Point(372, 108);
+            this.box_adresse.Location = new System.Drawing.Point(1047, 119);
             this.box_adresse.Name = "box_adresse";
             this.box_adresse.Size = new System.Drawing.Size(117, 22);
             this.box_adresse.TabIndex = 10;
+            // 
+            // label_nom
+            // 
+            this.label_nom.AutoSize = true;
+            this.label_nom.Location = new System.Drawing.Point(395, 118);
+            this.label_nom.Name = "label_nom";
+            this.label_nom.Size = new System.Drawing.Size(37, 17);
+            this.label_nom.TabIndex = 11;
+            this.label_nom.Text = "Nom";
+            // 
+            // label_prenom
+            // 
+            this.label_prenom.AutoSize = true;
+            this.label_prenom.Location = new System.Drawing.Point(660, 120);
+            this.label_prenom.Name = "label_prenom";
+            this.label_prenom.Size = new System.Drawing.Size(57, 17);
+            this.label_prenom.TabIndex = 12;
+            this.label_prenom.Text = "Prénom";
+            // 
+            // label_adresse
+            // 
+            this.label_adresse.AutoSize = true;
+            this.label_adresse.Location = new System.Drawing.Point(965, 122);
+            this.label_adresse.Name = "label_adresse";
+            this.label_adresse.Size = new System.Drawing.Size(60, 17);
+            this.label_adresse.TabIndex = 13;
+            this.label_adresse.Text = "Adresse";
+            // 
+            // label_client
+            // 
+            this.label_client.AutoSize = true;
+            this.label_client.Location = new System.Drawing.Point(742, 25);
+            this.label_client.Name = "label_client";
+            this.label_client.Size = new System.Drawing.Size(124, 17);
+            this.label_client.TabIndex = 14;
+            this.label_client.Text = "Informations Client";
+            // 
+            // btn_actualiserclient
+            // 
+            this.btn_actualiserclient.Location = new System.Drawing.Point(1139, 261);
+            this.btn_actualiserclient.Name = "btn_actualiserclient";
+            this.btn_actualiserclient.Size = new System.Drawing.Size(133, 37);
+            this.btn_actualiserclient.TabIndex = 4;
+            this.btn_actualiserclient.Text = "Actualiser";
+            this.btn_actualiserclient.UseVisualStyleBackColor = true;
+            this.btn_actualiserclient.Click += new System.EventHandler(this.btn_actualiserclient_Click);
+            // 
+            // pictureModifier
+            // 
+            this.pictureModifier.BackgroundImage = global::Autofact.Properties.Resources.modifier;
+            this.pictureModifier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureModifier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureModifier.Location = new System.Drawing.Point(1002, 206);
+            this.pictureModifier.Name = "pictureModifier";
+            this.pictureModifier.Size = new System.Drawing.Size(46, 38);
+            this.pictureModifier.TabIndex = 16;
+            this.pictureModifier.TabStop = false;
+            this.pictureModifier.Click += new System.EventHandler(this.pictureModifier_Click);
+            // 
+            // pictureActualiser
+            // 
+            this.pictureActualiser.BackgroundImage = global::Autofact.Properties.Resources.Actualiser;
+            this.pictureActualiser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureActualiser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureActualiser.Location = new System.Drawing.Point(1064, 208);
+            this.pictureActualiser.Name = "pictureActualiser";
+            this.pictureActualiser.Size = new System.Drawing.Size(34, 34);
+            this.pictureActualiser.TabIndex = 15;
+            this.pictureActualiser.TabStop = false;
+            this.pictureActualiser.Click += new System.EventHandler(this.pictureActualiser_Click);
             // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1042, 537);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1284, 667);
+            this.Controls.Add(this.pictureModifier);
+            this.Controls.Add(this.pictureActualiser);
+            this.Controls.Add(this.label_client);
+            this.Controls.Add(this.label_adresse);
+            this.Controls.Add(this.label_prenom);
+            this.Controls.Add(this.label_nom);
             this.Controls.Add(this.box_adresse);
             this.Controls.Add(this.box_prenom);
             this.Controls.Add(this.box_nom);
             this.Controls.Add(this.btn_suppclie);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_modifclie);
             this.Controls.Add(this.btn_ajoutclie);
             this.Controls.Add(this.btn_actualiserclient);
             this.Controls.Add(this.dgvclient);
@@ -203,6 +279,8 @@ namespace Autofact
             this.Text = "Client";
             this.Load += new System.EventHandler(this.Client_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureModifier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureActualiser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,16 +292,22 @@ namespace Autofact
         private System.Windows.Forms.Button btn_profil;
         private System.Windows.Forms.Button btn_clients;
         private System.Windows.Forms.DataGridView dgvclient;
-        private System.Windows.Forms.Button btn_actualiserclient;
         private System.Windows.Forms.DataGridViewTextBoxColumn idclie;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomclie;
         private System.Windows.Forms.DataGridViewTextBoxColumn prenomclie;
         private System.Windows.Forms.DataGridViewTextBoxColumn adresseclie;
         private System.Windows.Forms.Button btn_ajoutclie;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_modifclie;
         private System.Windows.Forms.Button btn_suppclie;
         private System.Windows.Forms.TextBox box_nom;
         private System.Windows.Forms.TextBox box_prenom;
         private System.Windows.Forms.TextBox box_adresse;
+        private System.Windows.Forms.Label label_nom;
+        private System.Windows.Forms.Label label_prenom;
+        private System.Windows.Forms.Label label_adresse;
+        private System.Windows.Forms.Label label_client;
+        private System.Windows.Forms.Button btn_actualiserclient;
+        private System.Windows.Forms.PictureBox pictureActualiser;
+        private System.Windows.Forms.PictureBox pictureModifier;
     }
 }
