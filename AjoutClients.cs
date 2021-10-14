@@ -45,9 +45,9 @@ namespace Autofact
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Ajout de " + box_nom.Text + " " + box_prenom.Text + " réussi");
 
-                    box_nom.Text = "";
-                    box_prenom.Text = "";
-                    box_adresse.Text = "";
+                    box_nom.Clear();
+                    box_prenom.Clear();
+                    box_adresse.Clear();
                 }
             }
             else

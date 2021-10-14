@@ -61,11 +61,11 @@ namespace Autofact
                             ConnexionPage x = new ConnexionPage();
                             x.Show();
                             
-                            box_nom.Text = "";
-                            box_prenom.Text = "";
-                            box_mail.Text = "";
-                            box_mdp.Text = "";
-                            box_confmdp.Text = "";
+                            box_nom.Clear();
+                            box_prenom.Clear();
+                            box_mail.Clear();
+                            box_mdp.Clear();
+                            box_confmdp.Clear();
 
 
                     }

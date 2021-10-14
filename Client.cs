@@ -66,9 +66,9 @@ namespace Autofact
 
         private void ClearData()
         {
-            box_nom.Text = "";
-            box_prenom.Text = "";
-            box_adresse.Text = "";
+            box_nom.Clear();
+            box_prenom.Clear();
+            box_adresse.Clear();
             ID = 0;
         }
         private void btn_ajoutclie_Click(object sender, EventArgs e)
