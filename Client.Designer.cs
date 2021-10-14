@@ -33,13 +33,17 @@ namespace Autofact
             this.btn_profil = new System.Windows.Forms.Button();
             this.btn_clients = new System.Windows.Forms.Button();
             this.dgvclient = new System.Windows.Forms.DataGridView();
-            this.btn_actualiserclient = new System.Windows.Forms.Button();
             this.idclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenomclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adresseclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_actualiserclient = new System.Windows.Forms.Button();
             this.btn_ajoutclie = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btn_suppclie = new System.Windows.Forms.Button();
+            this.box_nom = new System.Windows.Forms.TextBox();
+            this.box_prenom = new System.Windows.Forms.TextBox();
+            this.box_adresse = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,16 +89,7 @@ namespace Autofact
             this.dgvclient.RowTemplate.Height = 24;
             this.dgvclient.Size = new System.Drawing.Size(711, 350);
             this.dgvclient.TabIndex = 3;
-            // 
-            // btn_actualiserclient
-            // 
-            this.btn_actualiserclient.Location = new System.Drawing.Point(897, 93);
-            this.btn_actualiserclient.Name = "btn_actualiserclient";
-            this.btn_actualiserclient.Size = new System.Drawing.Size(133, 37);
-            this.btn_actualiserclient.TabIndex = 4;
-            this.btn_actualiserclient.Text = "Actualiser";
-            this.btn_actualiserclient.UseVisualStyleBackColor = true;
-            this.btn_actualiserclient.Click += new System.EventHandler(this.btn_actualiserclient_Click);
+            this.dgvclient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvclient_CellClick);
             // 
             // idclie
             // 
@@ -128,6 +123,16 @@ namespace Autofact
             this.adresseclie.Name = "adresseclie";
             this.adresseclie.Width = 125;
             // 
+            // btn_actualiserclient
+            // 
+            this.btn_actualiserclient.Location = new System.Drawing.Point(897, 93);
+            this.btn_actualiserclient.Name = "btn_actualiserclient";
+            this.btn_actualiserclient.Size = new System.Drawing.Size(133, 37);
+            this.btn_actualiserclient.TabIndex = 4;
+            this.btn_actualiserclient.Text = "Actualiser";
+            this.btn_actualiserclient.UseVisualStyleBackColor = true;
+            this.btn_actualiserclient.Click += new System.EventHandler(this.btn_actualiserclient_Click);
+            // 
             // btn_ajoutclie
             // 
             this.btn_ajoutclie.Location = new System.Drawing.Point(693, 93);
@@ -147,11 +152,46 @@ namespace Autofact
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // btn_suppclie
+            // 
+            this.btn_suppclie.Location = new System.Drawing.Point(554, 95);
+            this.btn_suppclie.Name = "btn_suppclie";
+            this.btn_suppclie.Size = new System.Drawing.Size(104, 35);
+            this.btn_suppclie.TabIndex = 7;
+            this.btn_suppclie.Text = "Supprimer";
+            this.btn_suppclie.UseVisualStyleBackColor = true;
+            this.btn_suppclie.Click += new System.EventHandler(this.btn_suppclie_Click);
+            // 
+            // box_nom
+            // 
+            this.box_nom.Location = new System.Drawing.Point(372, 20);
+            this.box_nom.Name = "box_nom";
+            this.box_nom.Size = new System.Drawing.Size(117, 22);
+            this.box_nom.TabIndex = 8;
+            // 
+            // box_prenom
+            // 
+            this.box_prenom.Location = new System.Drawing.Point(372, 63);
+            this.box_prenom.Name = "box_prenom";
+            this.box_prenom.Size = new System.Drawing.Size(117, 22);
+            this.box_prenom.TabIndex = 9;
+            // 
+            // box_adresse
+            // 
+            this.box_adresse.Location = new System.Drawing.Point(372, 108);
+            this.box_adresse.Name = "box_adresse";
+            this.box_adresse.Size = new System.Drawing.Size(117, 22);
+            this.box_adresse.TabIndex = 10;
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1042, 537);
+            this.Controls.Add(this.box_adresse);
+            this.Controls.Add(this.box_prenom);
+            this.Controls.Add(this.box_nom);
+            this.Controls.Add(this.btn_suppclie);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_ajoutclie);
             this.Controls.Add(this.btn_actualiserclient);
@@ -164,6 +204,7 @@ namespace Autofact
             this.Load += new System.EventHandler(this.Client_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -180,5 +221,9 @@ namespace Autofact
         private System.Windows.Forms.DataGridViewTextBoxColumn adresseclie;
         private System.Windows.Forms.Button btn_ajoutclie;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_suppclie;
+        private System.Windows.Forms.TextBox box_nom;
+        private System.Windows.Forms.TextBox box_prenom;
+        private System.Windows.Forms.TextBox box_adresse;
     }
 }

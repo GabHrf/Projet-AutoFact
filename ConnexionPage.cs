@@ -33,16 +33,14 @@ namespace Autofact
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
 
-            string password = box_mdp.Text;
-            string mySalt = BCrypt.Net.BCrypt.GenerateSalt();
-            string myHash = BCrypt.Net.BCrypt.HashPassword(password, mySalt);
-
-            bool verifmdp = BCrypt.Net.BCrypt.Verify(password, myHash);
-
             if (box_mail.Text != string.Empty && box_mdp.Text != string.Empty)
             {
                 conn.Open();
-                string select = "SELECT `MAIL`, `MDP` FROM `utilisateur` WHERE `MAIL`= '"+box_mail.Text+"' AND `MDP`= '"+verifmdp+"'";
+                string selectsalt = "SELECT SALT FROM utilisateur WHERE MAIL = '" + box_mail.Text + "'";
+                MySqlCommand cmdSalt = new MySqlCommand(selectsalt, conn);
+                string salt = cmdSalt.ExecuteScalar().ToString();
+
+                string select = "SELECT `MAIL`, `MDP` FROM `utilisateur` WHERE `MAIL`= '"+box_mail.Text+"' AND `MDP`= '"+BCrypt.Net.BCrypt.HashPassword(box_mdp.Text, salt)+"'";
                 MySqlCommand read = new MySqlCommand(select, conn);
                 MySqlDataReader rd = read.ExecuteReader();
                 if (rd.Read())

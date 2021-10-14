@@ -13,9 +13,11 @@ namespace Autofact
 {
     public partial class Client : Form
     {
+        int ID = 0;
         public Client()
         {
             InitializeComponent();
+            displayData();
         }
 
         private void Client_Load(object sender, EventArgs e)
@@ -36,6 +38,18 @@ namespace Autofact
             x.Show();
         }
 
+        private void displayData()
+        {
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            conn.Open();
+            MySqlDataAdapter sqlDa = new MySqlDataAdapter("SELECT `IDCLIENT`, `NOM`, `PRENOM`, `ADRESSE` FROM `clients`", conn);
+            DataTable dtbl = new DataTable();
+            sqlDa.Fill(dtbl);
+
+            dgvclient.DataSource = dtbl;
+        }
         private void btn_actualiserclient_Click(object sender, EventArgs e)
         {
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
@@ -47,13 +61,51 @@ namespace Autofact
             sqlDa.Fill(dtbl);
 
             dgvclient.DataSource = dtbl;
-
+            ClearData();
         }
 
+        private void ClearData()
+        {
+            box_nom.Text = "";
+            box_prenom.Text = "";
+            box_adresse.Text = "";
+            ID = 0;
+        }
         private void btn_ajoutclie_Click(object sender, EventArgs e)
         {
             AjoutClients x = new AjoutClients();
             x.Show();
+        }
+        private void btn_suppclie_Click(object sender, EventArgs e)
+        {
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            if (ID != 0)
+            {
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM `clients` WHERE `IDCLIENT` = @id", conn);
+                conn.Open();
+                cmd.Parameters.AddWithValue("@id", ID);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Client supprimer!");
+                displayData();
+                ClearData();
+            }
+            else
+            {
+                MessageBox.Show("Selectionnez un client à supprimer");
+            }
+        }
+
+        private void dgvclient_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = dgvclient.Rows[index];
+            ID = Convert.ToInt32(selectedRow.Cells[0].Value.ToString());
+            box_nom.Text = selectedRow.Cells[1].Value.ToString();
+            box_prenom.Text = selectedRow.Cells[2].Value.ToString();
+            box_adresse.Text = selectedRow.Cells[3].Value.ToString();
         }
     }
 }

@@ -52,6 +52,7 @@ namespace Autofact
             this.btn_profil.TabIndex = 1;
             this.btn_profil.Text = "Profil";
             this.btn_profil.UseVisualStyleBackColor = true;
+            this.btn_profil.Click += new System.EventHandler(this.btn_profil_Click);
             // 
             // btn_deconnexion
             // 

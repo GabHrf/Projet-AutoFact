@@ -44,6 +44,10 @@ namespace Autofact
                     MySqlCommand cmd = new MySqlCommand(insert, conn);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Ajout de " + box_nom.Text + " " + box_prenom.Text + " réussi");
+
+                    box_nom.Text = "";
+                    box_prenom.Text = "";
+                    box_adresse.Text = "";
                 }
             }
             else

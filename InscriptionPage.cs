@@ -53,14 +53,22 @@ namespace Autofact
                         else
                         {
                             rd.Close();
-                            string insert = "INSERT INTO `utilisateur`(`NOM`, `PRENOM`, `MAIL`, `MDP`) VALUES ('" + box_nom.Text + "','" + box_prenom.Text + "','" + box_mail.Text + "','" + myHash + "')";
+                            string insert = "INSERT INTO `utilisateur`(`NOM`, `PRENOM`, `MAIL`, `MDP`, `SALT`) VALUES ('" + box_nom.Text + "','" + box_prenom.Text + "','" + box_mail.Text + "','" + myHash + "', '"+mySalt+"')";
                             MySqlCommand cmd = new MySqlCommand(insert, conn);
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Vous venez de vous inscrire");
                             Hide();
                             ConnexionPage x = new ConnexionPage();
                             x.Show();
-                        }
+                            
+                            box_nom.Text = "";
+                            box_prenom.Text = "";
+                            box_mail.Text = "";
+                            box_mdp.Text = "";
+                            box_confmdp.Text = "";
+
+
+                    }
                  }
                     else
                     {

@@ -37,5 +37,12 @@ namespace Autofact
             Client x = new Client();
             x.Show();
         }
+
+        private void btn_profil_Click(object sender, EventArgs e)
+        {
+            Hide();
+            ProfilUser x = new ProfilUser();
+            x.Show();
+        }
     }
 }
