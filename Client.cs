@@ -50,19 +50,6 @@ namespace Autofact
 
             dgvclient.DataSource = dtbl;
         }
-        private void btn_actualiserclient_Click(object sender, EventArgs e)
-        {
-            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-
-            conn.Open();
-            MySqlDataAdapter sqlDa = new MySqlDataAdapter("SELECT `IDCLIENT`, `NOM`, `PRENOM`, `ADRESSE` FROM `clients`", conn);
-            DataTable dtbl = new DataTable();
-            sqlDa.Fill(dtbl);
-
-            dgvclient.DataSource = dtbl;
-            ClearData();
-        }
 
         private void ClearData()
         {
@@ -70,32 +57,6 @@ namespace Autofact
             box_prenom.Clear();
             box_adresse.Clear();
             ID = 0;
-        }
-        private void btn_ajoutclie_Click(object sender, EventArgs e)
-        {
-            AjoutClients x = new AjoutClients();
-            x.Show();
-        }
-        private void btn_suppclie_Click(object sender, EventArgs e)
-        {
-            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-
-            if (ID != 0)
-            {
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM `clients` WHERE `IDCLIENT` = @id", conn);
-                conn.Open();
-                cmd.Parameters.AddWithValue("@id", ID);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Client supprimer!");
-                displayData();
-                ClearData();
-            }
-            else
-            {
-                MessageBox.Show("Selectionnez un client à supprimer");
-            }
         }
 
         private void dgvclient_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -106,28 +67,6 @@ namespace Autofact
             box_nom.Text = selectedRow.Cells[1].Value.ToString();
             box_prenom.Text = selectedRow.Cells[2].Value.ToString();
             box_adresse.Text = selectedRow.Cells[3].Value.ToString();
-        }
-
-        private void btn_modifclie_Click(object sender, EventArgs e)
-        {
-            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-
-            if (ID != 0)
-            {
-                MySqlCommand cmd = new MySqlCommand("UPDATE `clients` SET `NOM`= '"+box_nom.Text+"',`PRENOM`= '"+box_prenom.Text+"',`ADRESSE`='"+box_adresse.Text+"' WHERE `IDCLIENT` = @id", conn);
-                conn.Open();
-                cmd.Parameters.AddWithValue("@id", ID);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Client modifier!");
-                displayData();
-                ClearData();
-            }
-            else
-            {
-                MessageBox.Show("Selectionnez un client à modifier");
-            }
         }
 
         private void pictureActualiser_Click(object sender, EventArgs e)
@@ -164,6 +103,48 @@ namespace Autofact
             {
                 MessageBox.Show("Selectionnez un client à modifier");
             }
+        }
+
+        private void pictureAjouter_Click(object sender, EventArgs e)
+        {
+            AjoutClients x = new AjoutClients();
+            x.Show();
+        }
+
+        private void pictureSupprimer_Click(object sender, EventArgs e)
+        {
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            if (ID != 0)
+            {
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM `clients` WHERE `IDCLIENT` = @id", conn);
+                conn.Open();
+                cmd.Parameters.AddWithValue("@id", ID);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Client supprimer!");
+                displayData();
+                ClearData();
+            }
+            else
+            {
+                MessageBox.Show("Selectionnez un client à supprimer");
+            }
+        }
+
+        private void btn_clients_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Client x = new Client();
+            x.Show();
+        }
+
+        private void btn_profil_Click(object sender, EventArgs e)
+        {
+            Hide();
+            ProfilUser x = new ProfilUser();
+            x.Show();
         }
     }
 }

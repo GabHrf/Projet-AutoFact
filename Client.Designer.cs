@@ -37,9 +37,6 @@ namespace Autofact
             this.nomclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenomclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adresseclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_ajoutclie = new System.Windows.Forms.Button();
-            this.btn_modifclie = new System.Windows.Forms.Button();
-            this.btn_suppclie = new System.Windows.Forms.Button();
             this.box_nom = new System.Windows.Forms.TextBox();
             this.box_prenom = new System.Windows.Forms.TextBox();
             this.box_adresse = new System.Windows.Forms.TextBox();
@@ -47,10 +44,13 @@ namespace Autofact
             this.label_prenom = new System.Windows.Forms.Label();
             this.label_adresse = new System.Windows.Forms.Label();
             this.label_client = new System.Windows.Forms.Label();
-            this.btn_actualiserclient = new System.Windows.Forms.Button();
+            this.pictureSupprimer = new System.Windows.Forms.PictureBox();
+            this.pictureAjouter = new System.Windows.Forms.PictureBox();
             this.pictureModifier = new System.Windows.Forms.PictureBox();
             this.pictureActualiser = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSupprimer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAjouter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureModifier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureActualiser)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +73,7 @@ namespace Autofact
             this.btn_profil.TabIndex = 1;
             this.btn_profil.Text = "Profil";
             this.btn_profil.UseVisualStyleBackColor = true;
+            this.btn_profil.Click += new System.EventHandler(this.btn_profil_Click);
             // 
             // btn_clients
             // 
@@ -82,6 +83,7 @@ namespace Autofact
             this.btn_clients.TabIndex = 2;
             this.btn_clients.Text = "Clients";
             this.btn_clients.UseVisualStyleBackColor = true;
+            this.btn_clients.Click += new System.EventHandler(this.btn_clients_Click);
             // 
             // dgvclient
             // 
@@ -130,36 +132,6 @@ namespace Autofact
             this.adresseclie.MinimumWidth = 6;
             this.adresseclie.Name = "adresseclie";
             this.adresseclie.Width = 125;
-            // 
-            // btn_ajoutclie
-            // 
-            this.btn_ajoutclie.Location = new System.Drawing.Point(699, 208);
-            this.btn_ajoutclie.Name = "btn_ajoutclie";
-            this.btn_ajoutclie.Size = new System.Drawing.Size(133, 35);
-            this.btn_ajoutclie.TabIndex = 5;
-            this.btn_ajoutclie.Text = "Ajouter un client";
-            this.btn_ajoutclie.UseVisualStyleBackColor = true;
-            this.btn_ajoutclie.Click += new System.EventHandler(this.btn_ajoutclie_Click);
-            // 
-            // btn_modifclie
-            // 
-            this.btn_modifclie.Location = new System.Drawing.Point(856, 206);
-            this.btn_modifclie.Name = "btn_modifclie";
-            this.btn_modifclie.Size = new System.Drawing.Size(93, 37);
-            this.btn_modifclie.TabIndex = 6;
-            this.btn_modifclie.Text = "Modifier";
-            this.btn_modifclie.UseVisualStyleBackColor = true;
-            this.btn_modifclie.Click += new System.EventHandler(this.btn_modifclie_Click);
-            // 
-            // btn_suppclie
-            // 
-            this.btn_suppclie.Location = new System.Drawing.Point(564, 208);
-            this.btn_suppclie.Name = "btn_suppclie";
-            this.btn_suppclie.Size = new System.Drawing.Size(104, 36);
-            this.btn_suppclie.TabIndex = 7;
-            this.btn_suppclie.Text = "Supprimer";
-            this.btn_suppclie.UseVisualStyleBackColor = true;
-            this.btn_suppclie.Click += new System.EventHandler(this.btn_suppclie_Click);
             // 
             // box_nom
             // 
@@ -218,24 +190,38 @@ namespace Autofact
             this.label_client.TabIndex = 14;
             this.label_client.Text = "Informations Client";
             // 
-            // btn_actualiserclient
+            // pictureSupprimer
             // 
-            this.btn_actualiserclient.Location = new System.Drawing.Point(1139, 261);
-            this.btn_actualiserclient.Name = "btn_actualiserclient";
-            this.btn_actualiserclient.Size = new System.Drawing.Size(133, 37);
-            this.btn_actualiserclient.TabIndex = 4;
-            this.btn_actualiserclient.Text = "Actualiser";
-            this.btn_actualiserclient.UseVisualStyleBackColor = true;
-            this.btn_actualiserclient.Click += new System.EventHandler(this.btn_actualiserclient_Click);
+            this.pictureSupprimer.BackgroundImage = global::Autofact.Properties.Resources.supprimer;
+            this.pictureSupprimer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureSupprimer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureSupprimer.Location = new System.Drawing.Point(878, 208);
+            this.pictureSupprimer.Name = "pictureSupprimer";
+            this.pictureSupprimer.Size = new System.Drawing.Size(39, 36);
+            this.pictureSupprimer.TabIndex = 18;
+            this.pictureSupprimer.TabStop = false;
+            this.pictureSupprimer.Click += new System.EventHandler(this.pictureSupprimer_Click);
+            // 
+            // pictureAjouter
+            // 
+            this.pictureAjouter.BackgroundImage = global::Autofact.Properties.Resources.ajouter;
+            this.pictureAjouter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureAjouter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureAjouter.Location = new System.Drawing.Point(942, 208);
+            this.pictureAjouter.Name = "pictureAjouter";
+            this.pictureAjouter.Size = new System.Drawing.Size(42, 36);
+            this.pictureAjouter.TabIndex = 17;
+            this.pictureAjouter.TabStop = false;
+            this.pictureAjouter.Click += new System.EventHandler(this.pictureAjouter_Click);
             // 
             // pictureModifier
             // 
             this.pictureModifier.BackgroundImage = global::Autofact.Properties.Resources.modifier;
             this.pictureModifier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureModifier.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureModifier.Location = new System.Drawing.Point(1002, 206);
+            this.pictureModifier.Location = new System.Drawing.Point(1005, 208);
             this.pictureModifier.Name = "pictureModifier";
-            this.pictureModifier.Size = new System.Drawing.Size(46, 38);
+            this.pictureModifier.Size = new System.Drawing.Size(43, 36);
             this.pictureModifier.TabIndex = 16;
             this.pictureModifier.TabStop = false;
             this.pictureModifier.Click += new System.EventHandler(this.pictureModifier_Click);
@@ -258,6 +244,8 @@ namespace Autofact
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1284, 667);
+            this.Controls.Add(this.pictureSupprimer);
+            this.Controls.Add(this.pictureAjouter);
             this.Controls.Add(this.pictureModifier);
             this.Controls.Add(this.pictureActualiser);
             this.Controls.Add(this.label_client);
@@ -267,10 +255,6 @@ namespace Autofact
             this.Controls.Add(this.box_adresse);
             this.Controls.Add(this.box_prenom);
             this.Controls.Add(this.box_nom);
-            this.Controls.Add(this.btn_suppclie);
-            this.Controls.Add(this.btn_modifclie);
-            this.Controls.Add(this.btn_ajoutclie);
-            this.Controls.Add(this.btn_actualiserclient);
             this.Controls.Add(this.dgvclient);
             this.Controls.Add(this.btn_clients);
             this.Controls.Add(this.btn_profil);
@@ -279,6 +263,8 @@ namespace Autofact
             this.Text = "Client";
             this.Load += new System.EventHandler(this.Client_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSupprimer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureAjouter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureModifier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureActualiser)).EndInit();
             this.ResumeLayout(false);
@@ -296,9 +282,6 @@ namespace Autofact
         private System.Windows.Forms.DataGridViewTextBoxColumn nomclie;
         private System.Windows.Forms.DataGridViewTextBoxColumn prenomclie;
         private System.Windows.Forms.DataGridViewTextBoxColumn adresseclie;
-        private System.Windows.Forms.Button btn_ajoutclie;
-        private System.Windows.Forms.Button btn_modifclie;
-        private System.Windows.Forms.Button btn_suppclie;
         private System.Windows.Forms.TextBox box_nom;
         private System.Windows.Forms.TextBox box_prenom;
         private System.Windows.Forms.TextBox box_adresse;
@@ -306,8 +289,9 @@ namespace Autofact
         private System.Windows.Forms.Label label_prenom;
         private System.Windows.Forms.Label label_adresse;
         private System.Windows.Forms.Label label_client;
-        private System.Windows.Forms.Button btn_actualiserclient;
         private System.Windows.Forms.PictureBox pictureActualiser;
         private System.Windows.Forms.PictureBox pictureModifier;
+        private System.Windows.Forms.PictureBox pictureAjouter;
+        private System.Windows.Forms.PictureBox pictureSupprimer;
     }
 }
