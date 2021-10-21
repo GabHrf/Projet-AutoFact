@@ -42,5 +42,17 @@ namespace Autofact
             ConnexionPage x = new ConnexionPage();
             x.Show();
         }
+
+        private void btn_recapMensuel_Click(object sender, EventArgs e)
+        {
+            RecapMensuelUser x = new RecapMensuelUser();
+            x.Show();
+        }
+
+        private void btn_recapTrimestriel_Click(object sender, EventArgs e)
+        {
+            RecapTrimestrielUser x = new RecapTrimestrielUser();
+            x.Show();
+        }
     }
 }

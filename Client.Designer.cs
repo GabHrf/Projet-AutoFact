@@ -100,6 +100,7 @@ namespace Autofact
             this.dgvclient.Size = new System.Drawing.Size(882, 362);
             this.dgvclient.TabIndex = 3;
             this.dgvclient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvclient_CellClick);
+            this.dgvclient.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvclient_MouseClick);
             // 
             // idclie
             // 

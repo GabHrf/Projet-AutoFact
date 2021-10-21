@@ -135,9 +135,8 @@ namespace Autofact
 
         private void btn_clients_Click(object sender, EventArgs e)
         {
-            Hide();
-            Client x = new Client();
-            x.Show();
+            MessageBox.Show("Vous êtes déjà sur la page Client !!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
 
         private void btn_profil_Click(object sender, EventArgs e)
@@ -145,6 +144,26 @@ namespace Autofact
             Hide();
             ProfilUser x = new ProfilUser();
             x.Show();
+        }
+
+        private void dgvclient_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu m = new ContextMenu();
+
+                int currentMouseOverRow = dgvclient.HitTest(e.X, e.Y).RowIndex;
+
+                if (currentMouseOverRow >= 0)
+                {
+                    m.MenuItems.Add(new MenuItem("Détail du client"));
+                }
+
+                m.Show(dgvclient, new Point(e.X, e.Y));
+
+                
+            }
+
         }
     }
 }

@@ -70,19 +70,21 @@ namespace Autofact
             // 
             this.btn_recapMensuel.Location = new System.Drawing.Point(376, 222);
             this.btn_recapMensuel.Name = "btn_recapMensuel";
-            this.btn_recapMensuel.Size = new System.Drawing.Size(94, 57);
+            this.btn_recapMensuel.Size = new System.Drawing.Size(118, 74);
             this.btn_recapMensuel.TabIndex = 3;
             this.btn_recapMensuel.Text = "Récapitulatif\r\nMensuel\r\n";
             this.btn_recapMensuel.UseVisualStyleBackColor = true;
+            this.btn_recapMensuel.Click += new System.EventHandler(this.btn_recapMensuel_Click);
             // 
             // btn_recapTrimestriel
             // 
             this.btn_recapTrimestriel.Location = new System.Drawing.Point(580, 222);
             this.btn_recapTrimestriel.Name = "btn_recapTrimestriel";
-            this.btn_recapTrimestriel.Size = new System.Drawing.Size(94, 57);
+            this.btn_recapTrimestriel.Size = new System.Drawing.Size(114, 74);
             this.btn_recapTrimestriel.TabIndex = 4;
             this.btn_recapTrimestriel.Text = "Récapitulatif\r\nTrimestriel";
             this.btn_recapTrimestriel.UseVisualStyleBackColor = true;
+            this.btn_recapTrimestriel.Click += new System.EventHandler(this.btn_recapTrimestriel_Click);
             // 
             // ProfilUser
             // 

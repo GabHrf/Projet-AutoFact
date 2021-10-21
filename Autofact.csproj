@@ -86,6 +86,7 @@
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -144,6 +145,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecapMensuelUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecapMensuelUser.Designer.cs">
+      <DependentUpon>RecapMensuelUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecapTrimestrielUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecapTrimestrielUser.Designer.cs">
+      <DependentUpon>RecapTrimestrielUser.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +179,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecapMensuelUser.resx">
+      <DependentUpon>RecapMensuelUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecapTrimestrielUser.resx">
+      <DependentUpon>RecapTrimestrielUser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
