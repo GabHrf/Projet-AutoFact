@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Autofact
 {
-    public partial class RecapMensuelUser : Form
+    public partial class detailsclient : Form
     {
-        public RecapMensuelUser()
+        public detailsclient()
         {
             InitializeComponent();
-        }
-
-        private void chartRecapMensUser_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

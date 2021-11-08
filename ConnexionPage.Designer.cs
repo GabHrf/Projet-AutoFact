@@ -75,6 +75,7 @@
             this.box_mdp.Size = new System.Drawing.Size(303, 22);
             this.box_mdp.TabIndex = 2;
             this.box_mdp.UseSystemPasswordChar = true;
+            this.box_mdp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.box_mdp_KeyPress);
             // 
             // box_mail
             // 
@@ -82,6 +83,7 @@
             this.box_mail.Name = "box_mail";
             this.box_mail.Size = new System.Drawing.Size(303, 22);
             this.box_mail.TabIndex = 1;
+            this.box_mail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.box_mail_KeyPress);
             // 
             // labelConnexion
             // 

@@ -48,6 +48,8 @@ namespace Autofact
             this.pictureAjouter = new System.Windows.Forms.PictureBox();
             this.pictureModifier = new System.Windows.Forms.PictureBox();
             this.pictureActualiser = new System.Windows.Forms.PictureBox();
+            this.btn_detailscli = new System.Windows.Forms.Button();
+            this.btn_presta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSupprimer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAjouter)).BeginInit();
@@ -57,7 +59,7 @@ namespace Autofact
             // 
             // btn_deconnexion
             // 
-            this.btn_deconnexion.Location = new System.Drawing.Point(35, 345);
+            this.btn_deconnexion.Location = new System.Drawing.Point(35, 461);
             this.btn_deconnexion.Name = "btn_deconnexion";
             this.btn_deconnexion.Size = new System.Drawing.Size(117, 56);
             this.btn_deconnexion.TabIndex = 0;
@@ -100,7 +102,6 @@ namespace Autofact
             this.dgvclient.Size = new System.Drawing.Size(882, 362);
             this.dgvclient.TabIndex = 3;
             this.dgvclient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvclient_CellClick);
-            this.dgvclient.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvclient_MouseClick);
             // 
             // idclie
             // 
@@ -239,12 +240,33 @@ namespace Autofact
             this.pictureActualiser.TabStop = false;
             this.pictureActualiser.Click += new System.EventHandler(this.pictureActualiser_Click);
             // 
+            // btn_detailscli
+            // 
+            this.btn_detailscli.Location = new System.Drawing.Point(733, 208);
+            this.btn_detailscli.Name = "btn_detailscli";
+            this.btn_detailscli.Size = new System.Drawing.Size(106, 36);
+            this.btn_detailscli.TabIndex = 19;
+            this.btn_detailscli.Text = "Détails Client";
+            this.btn_detailscli.UseVisualStyleBackColor = true;
+            this.btn_detailscli.Click += new System.EventHandler(this.btn_detailscli_Click);
+            // 
+            // btn_presta
+            // 
+            this.btn_presta.Location = new System.Drawing.Point(35, 357);
+            this.btn_presta.Name = "btn_presta";
+            this.btn_presta.Size = new System.Drawing.Size(116, 63);
+            this.btn_presta.TabIndex = 20;
+            this.btn_presta.Text = "Enregistrer une Prestation";
+            this.btn_presta.UseVisualStyleBackColor = true;
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1284, 667);
+            this.Controls.Add(this.btn_presta);
+            this.Controls.Add(this.btn_detailscli);
             this.Controls.Add(this.pictureSupprimer);
             this.Controls.Add(this.pictureAjouter);
             this.Controls.Add(this.pictureModifier);
@@ -294,5 +316,7 @@ namespace Autofact
         private System.Windows.Forms.PictureBox pictureModifier;
         private System.Windows.Forms.PictureBox pictureAjouter;
         private System.Windows.Forms.PictureBox pictureSupprimer;
+        private System.Windows.Forms.Button btn_detailscli;
+        private System.Windows.Forms.Button btn_presta;
     }
 }

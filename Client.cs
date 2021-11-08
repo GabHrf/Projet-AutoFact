@@ -146,24 +146,10 @@ namespace Autofact
             x.Show();
         }
 
-        private void dgvclient_MouseClick(object sender, MouseEventArgs e)
+        private void btn_detailscli_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                ContextMenu m = new ContextMenu();
-
-                int currentMouseOverRow = dgvclient.HitTest(e.X, e.Y).RowIndex;
-
-                if (currentMouseOverRow >= 0)
-                {
-                    m.MenuItems.Add(new MenuItem("Détail du client"));
-                }
-
-                m.Show(dgvclient, new Point(e.X, e.Y));
-
-                
-            }
-
+            detailsclient x = new detailsclient();
+            x.Show();
         }
     }
 }

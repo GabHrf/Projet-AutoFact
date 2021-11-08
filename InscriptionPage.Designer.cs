@@ -61,6 +61,7 @@ namespace Autofact
             this.box_mail.Size = new System.Drawing.Size(273, 22);
             this.box_mail.TabIndex = 1;
             this.box_mail.TextChanged += new System.EventHandler(this.box_mail_TextChanged);
+            this.box_mail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.box_mail_KeyPress);
             // 
             // box_mdp
             // 
@@ -70,6 +71,7 @@ namespace Autofact
             this.box_mdp.TabIndex = 4;
             this.box_mdp.UseSystemPasswordChar = true;
             this.box_mdp.TextChanged += new System.EventHandler(this.box_mdp_TextChanged);
+            this.box_mdp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.box_mdp_KeyPress);
             // 
             // btn_inscription
             // 
@@ -88,6 +90,7 @@ namespace Autofact
             this.box_nom.Size = new System.Drawing.Size(273, 22);
             this.box_nom.TabIndex = 2;
             this.box_nom.TextChanged += new System.EventHandler(this.box_nom_TextChanged);
+            this.box_nom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.box_nom_KeyPress);
             // 
             // box_prenom
             // 
@@ -96,6 +99,7 @@ namespace Autofact
             this.box_prenom.Size = new System.Drawing.Size(273, 22);
             this.box_prenom.TabIndex = 3;
             this.box_prenom.TextChanged += new System.EventHandler(this.box_prenom_TextChanged);
+            this.box_prenom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.box_prenom_KeyPress);
             // 
             // box_confmdp
             // 
@@ -105,6 +109,7 @@ namespace Autofact
             this.box_confmdp.TabIndex = 5;
             this.box_confmdp.UseSystemPasswordChar = true;
             this.box_confmdp.TextChanged += new System.EventHandler(this.box_confmdp_TextChanged);
+            this.box_confmdp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.box_confmdp_KeyPress);
             // 
             // label_email
             // 

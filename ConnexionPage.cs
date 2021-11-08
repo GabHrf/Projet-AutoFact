@@ -62,6 +62,22 @@ namespace Autofact
                 MessageBox.Show("Veuillez remplir toutes les cases et/ou renseignez un email valide !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void box_mail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(Convert.ToChar(13)))
+            {
+                btn_connexion_Click(sender, e);
+            }
+        }
+
+        private void box_mdp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(Convert.ToChar(13)))
+            {
+                btn_connexion_Click(sender, e);
+            }
+        }
     }
     }
 

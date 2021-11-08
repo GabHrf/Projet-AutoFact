@@ -119,5 +119,45 @@ namespace Autofact
             ConnexionPage x = new ConnexionPage();
             x.Show();
         }
+
+        private void box_mail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(Convert.ToChar(13)))
+            {
+                btn_inscription_Click(sender, e);
+            }
+        }
+
+        private void box_nom_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(Convert.ToChar(13)))
+            {
+                btn_inscription_Click(sender, e);
+            }
+        }
+
+        private void box_prenom_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(Convert.ToChar(13)))
+            {
+                btn_inscription_Click(sender, e);
+            }
+        }
+
+        private void box_mdp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(Convert.ToChar(13)))
+            {
+                btn_inscription_Click(sender, e);
+            }
+        }
+
+        private void box_confmdp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(Convert.ToChar(13)))
+            {
+                btn_inscription_Click(sender, e);
+            }
+        }
     }
 }

@@ -51,6 +51,7 @@ namespace Autofact
             this.chartRecapMensUser.Size = new System.Drawing.Size(755, 418);
             this.chartRecapMensUser.TabIndex = 0;
             this.chartRecapMensUser.Text = "RecapMensuelUser";
+            this.chartRecapMensUser.Click += new System.EventHandler(this.chartRecapMensUser_Click);
             // 
             // RecapMensuelUser
             // 
