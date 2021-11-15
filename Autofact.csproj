@@ -143,6 +143,12 @@
     <Compile Include="ConnexionPage.Designer.cs">
       <DependentUpon>ConnexionPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Prestation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prestation.Designer.cs">
+      <DependentUpon>Prestation.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProfilUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InscriptionPage.resx">
       <DependentUpon>InscriptionPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prestation.resx">
+      <DependentUpon>Prestation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfilUser.resx">
       <DependentUpon>ProfilUser.cs</DependentUpon>

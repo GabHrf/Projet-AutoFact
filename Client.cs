@@ -13,7 +13,9 @@ namespace Autofact
 {
     public partial class Client : Form
     {
+        detailsclient detailsclient;
         int ID = 0;
+
         public Client()
         {
             InitializeComponent();
@@ -148,8 +150,18 @@ namespace Autofact
 
         private void btn_detailscli_Click(object sender, EventArgs e)
         {
-            detailsclient x = new detailsclient();
-            x.Show();
+            if(ID != 0)
+            {
+                detailsclient = new detailsclient();
+                detailsclient.nom = box_nom.Text;
+                detailsclient.prenom = box_prenom.Text;
+                detailsclient.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Selectionnez un client !!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

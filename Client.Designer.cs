@@ -44,12 +44,13 @@ namespace Autofact
             this.label_prenom = new System.Windows.Forms.Label();
             this.label_adresse = new System.Windows.Forms.Label();
             this.label_client = new System.Windows.Forms.Label();
+            this.btn_detailscli = new System.Windows.Forms.Button();
+            this.btn_presta = new System.Windows.Forms.Button();
             this.pictureSupprimer = new System.Windows.Forms.PictureBox();
             this.pictureAjouter = new System.Windows.Forms.PictureBox();
             this.pictureModifier = new System.Windows.Forms.PictureBox();
             this.pictureActualiser = new System.Windows.Forms.PictureBox();
-            this.btn_detailscli = new System.Windows.Forms.Button();
-            this.btn_presta = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSupprimer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAjouter)).BeginInit();
@@ -192,6 +193,25 @@ namespace Autofact
             this.label_client.TabIndex = 14;
             this.label_client.Text = "Informations Client";
             // 
+            // btn_detailscli
+            // 
+            this.btn_detailscli.Location = new System.Drawing.Point(733, 204);
+            this.btn_detailscli.Name = "btn_detailscli";
+            this.btn_detailscli.Size = new System.Drawing.Size(106, 45);
+            this.btn_detailscli.TabIndex = 19;
+            this.btn_detailscli.Text = "Détails Client";
+            this.btn_detailscli.UseVisualStyleBackColor = true;
+            this.btn_detailscli.Click += new System.EventHandler(this.btn_detailscli_Click);
+            // 
+            // btn_presta
+            // 
+            this.btn_presta.Location = new System.Drawing.Point(35, 357);
+            this.btn_presta.Name = "btn_presta";
+            this.btn_presta.Size = new System.Drawing.Size(116, 63);
+            this.btn_presta.TabIndex = 20;
+            this.btn_presta.Text = "Enregistrer une Prestation";
+            this.btn_presta.UseVisualStyleBackColor = true;
+            // 
             // pictureSupprimer
             // 
             this.pictureSupprimer.BackgroundImage = global::Autofact.Properties.Resources.supprimer;
@@ -240,24 +260,14 @@ namespace Autofact
             this.pictureActualiser.TabStop = false;
             this.pictureActualiser.Click += new System.EventHandler(this.pictureActualiser_Click);
             // 
-            // btn_detailscli
+            // button1
             // 
-            this.btn_detailscli.Location = new System.Drawing.Point(733, 208);
-            this.btn_detailscli.Name = "btn_detailscli";
-            this.btn_detailscli.Size = new System.Drawing.Size(106, 36);
-            this.btn_detailscli.TabIndex = 19;
-            this.btn_detailscli.Text = "Détails Client";
-            this.btn_detailscli.UseVisualStyleBackColor = true;
-            this.btn_detailscli.Click += new System.EventHandler(this.btn_detailscli_Click);
-            // 
-            // btn_presta
-            // 
-            this.btn_presta.Location = new System.Drawing.Point(35, 357);
-            this.btn_presta.Name = "btn_presta";
-            this.btn_presta.Size = new System.Drawing.Size(116, 63);
-            this.btn_presta.TabIndex = 20;
-            this.btn_presta.Text = "Enregistrer une Prestation";
-            this.btn_presta.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(559, 204);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 45);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Enregistrer une prestation";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Client
             // 
@@ -265,6 +275,7 @@ namespace Autofact
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1284, 667);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_presta);
             this.Controls.Add(this.btn_detailscli);
             this.Controls.Add(this.pictureSupprimer);
@@ -318,5 +329,6 @@ namespace Autofact
         private System.Windows.Forms.PictureBox pictureSupprimer;
         private System.Windows.Forms.Button btn_detailscli;
         private System.Windows.Forms.Button btn_presta;
+        private System.Windows.Forms.Button button1;
     }
 }

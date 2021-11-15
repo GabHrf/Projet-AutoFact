@@ -12,9 +12,18 @@ namespace Autofact
 {
     public partial class detailsclient : Form
     {
+        public string nom;
+        public string prenom;
+
         public detailsclient()
         {
             InitializeComponent();
+        }
+
+        private void detailsclient_Load(object sender, EventArgs e)
+        {
+            label_nom.Text = nom;
+            label_prenom.Text = prenom;
         }
     }
 }
