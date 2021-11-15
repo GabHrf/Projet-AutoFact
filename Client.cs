@@ -163,5 +163,12 @@ namespace Autofact
             }
 
         }
+
+        private void btn_presta_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Prestation x = new Prestation();
+            x.Show();
+        }
     }
 }

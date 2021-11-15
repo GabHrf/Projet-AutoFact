@@ -50,7 +50,6 @@ namespace Autofact
             this.pictureAjouter = new System.Windows.Forms.PictureBox();
             this.pictureModifier = new System.Windows.Forms.PictureBox();
             this.pictureActualiser = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSupprimer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureAjouter)).BeginInit();
@@ -211,6 +210,7 @@ namespace Autofact
             this.btn_presta.TabIndex = 20;
             this.btn_presta.Text = "Enregistrer une Prestation";
             this.btn_presta.UseVisualStyleBackColor = true;
+            this.btn_presta.Click += new System.EventHandler(this.btn_presta_Click);
             // 
             // pictureSupprimer
             // 
@@ -260,22 +260,12 @@ namespace Autofact
             this.pictureActualiser.TabStop = false;
             this.pictureActualiser.Click += new System.EventHandler(this.pictureActualiser_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(559, 204);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 45);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Enregistrer une prestation";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1284, 667);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_presta);
             this.Controls.Add(this.btn_detailscli);
             this.Controls.Add(this.pictureSupprimer);
@@ -329,6 +319,5 @@ namespace Autofact
         private System.Windows.Forms.PictureBox pictureSupprimer;
         private System.Windows.Forms.Button btn_detailscli;
         private System.Windows.Forms.Button btn_presta;
-        private System.Windows.Forms.Button button1;
     }
 }

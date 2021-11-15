@@ -51,9 +51,31 @@ namespace Autofact
             int index = e.RowIndex;
             DataGridViewRow selectedRow = dgvclient.Rows[index];
             ID = Convert.ToInt32(selectedRow.Cells[0].Value.ToString());
-            box_nom.Text = selectedRow.Cells[1].Value.ToString();
-            box_prenom.Text = selectedRow.Cells[2].Value.ToString();
-            box_adresse.Text = selectedRow.Cells[3].Value.ToString();
+            box_prestation.Text = selectedRow.Cells[1].Value.ToString();
+            box_prix.Text = selectedRow.Cells[2].Value.ToString();
+            box_tva.Text = selectedRow.Cells[3].Value.ToString();
+        }
+
+        private void btn_actupresta_Click(object sender, EventArgs e)
+        {
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            conn.Open();
+            MySqlDataAdapter sqlDa = new MySqlDataAdapter("SELECT `IDPRESTATION`, `LIBELLE`, `PRIX`, `TVA` FROM `prestation`", conn);
+            DataTable dtbl = new DataTable();
+            sqlDa.Fill(dtbl);
+
+            dgvclient.DataSource = dtbl;
+            ClearData();
+        }
+
+        private void ClearData()
+        {
+            box_prestation.Clear();
+            box_prix.Clear();
+            box_tva.Clear();
+            ID = 0;
         }
     }
 }
