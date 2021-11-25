@@ -25,5 +25,10 @@ namespace Autofact
             label_nom.Text = nom;
             label_prenom.Text = prenom;
         }
+
+        private void label_nom_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

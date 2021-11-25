@@ -32,7 +32,7 @@ namespace Autofact
             this.btn_clients = new System.Windows.Forms.Button();
             this.btn_profil = new System.Windows.Forms.Button();
             this.btn_deconnexion = new System.Windows.Forms.Button();
-            this.dgvclient = new System.Windows.Forms.DataGridView();
+            this.dgvpresta = new System.Windows.Forms.DataGridView();
             this.box_tva = new System.Windows.Forms.TextBox();
             this.box_prix = new System.Windows.Forms.TextBox();
             this.box_prestation = new System.Windows.Forms.TextBox();
@@ -48,7 +48,7 @@ namespace Autofact
             this.btn_actupresta = new System.Windows.Forms.Button();
             this.btn_supppresta = new System.Windows.Forms.Button();
             this.btn_modifpresta = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvpresta)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_clients
@@ -81,21 +81,21 @@ namespace Autofact
             this.btn_deconnexion.UseVisualStyleBackColor = true;
             this.btn_deconnexion.Click += new System.EventHandler(this.btn_deconnexion_Click);
             // 
-            // dgvclient
+            // dgvpresta
             // 
-            this.dgvclient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvclient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvpresta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvpresta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idclie,
             this.nomclie,
             this.prenomclie,
             this.adresseclie});
-            this.dgvclient.Location = new System.Drawing.Point(450, 332);
-            this.dgvclient.Name = "dgvclient";
-            this.dgvclient.RowHeadersWidth = 51;
-            this.dgvclient.RowTemplate.Height = 24;
-            this.dgvclient.Size = new System.Drawing.Size(594, 285);
-            this.dgvclient.TabIndex = 4;
-            this.dgvclient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvclient_CellClick);
+            this.dgvpresta.Location = new System.Drawing.Point(295, 338);
+            this.dgvpresta.Name = "dgvpresta";
+            this.dgvpresta.RowHeadersWidth = 51;
+            this.dgvpresta.RowTemplate.Height = 24;
+            this.dgvpresta.Size = new System.Drawing.Size(711, 285);
+            this.dgvpresta.TabIndex = 4;
+            this.dgvpresta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvclient_CellClick);
             // 
             // box_tva
             // 
@@ -185,11 +185,12 @@ namespace Autofact
             this.btn_createpresta.TabIndex = 20;
             this.btn_createpresta.Text = "Créer une prestation";
             this.btn_createpresta.UseVisualStyleBackColor = true;
+            this.btn_createpresta.Click += new System.EventHandler(this.btn_createpresta_Click);
             // 
             // label_dgvprest
             // 
             this.label_dgvprest.AutoSize = true;
-            this.label_dgvprest.Location = new System.Drawing.Point(454, 303);
+            this.label_dgvprest.Location = new System.Drawing.Point(292, 288);
             this.label_dgvprest.Name = "label_dgvprest";
             this.label_dgvprest.Size = new System.Drawing.Size(106, 17);
             this.label_dgvprest.TabIndex = 21;
@@ -197,7 +198,7 @@ namespace Autofact
             // 
             // btn_actupresta
             // 
-            this.btn_actupresta.Location = new System.Drawing.Point(914, 276);
+            this.btn_actupresta.Location = new System.Drawing.Point(876, 288);
             this.btn_actupresta.Name = "btn_actupresta";
             this.btn_actupresta.Size = new System.Drawing.Size(130, 29);
             this.btn_actupresta.TabIndex = 22;
@@ -213,6 +214,7 @@ namespace Autofact
             this.btn_supppresta.TabIndex = 23;
             this.btn_supppresta.Text = "Supprimer";
             this.btn_supppresta.UseVisualStyleBackColor = true;
+            this.btn_supppresta.Click += new System.EventHandler(this.btn_supppresta_Click);
             // 
             // btn_modifpresta
             // 
@@ -222,6 +224,7 @@ namespace Autofact
             this.btn_modifpresta.TabIndex = 24;
             this.btn_modifpresta.Text = "Modifier";
             this.btn_modifpresta.UseVisualStyleBackColor = true;
+            this.btn_modifpresta.Click += new System.EventHandler(this.btn_modifpresta_Click);
             // 
             // Prestation
             // 
@@ -239,13 +242,13 @@ namespace Autofact
             this.Controls.Add(this.box_tva);
             this.Controls.Add(this.box_prix);
             this.Controls.Add(this.box_prestation);
-            this.Controls.Add(this.dgvclient);
+            this.Controls.Add(this.dgvpresta);
             this.Controls.Add(this.btn_deconnexion);
             this.Controls.Add(this.btn_profil);
             this.Controls.Add(this.btn_clients);
             this.Name = "Prestation";
             this.Text = "Prestation";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvpresta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,7 +259,7 @@ namespace Autofact
         private System.Windows.Forms.Button btn_clients;
         private System.Windows.Forms.Button btn_profil;
         private System.Windows.Forms.Button btn_deconnexion;
-        private System.Windows.Forms.DataGridView dgvclient;
+        private System.Windows.Forms.DataGridView dgvpresta;
         private System.Windows.Forms.TextBox box_tva;
         private System.Windows.Forms.TextBox box_prix;
         private System.Windows.Forms.TextBox box_prestation;

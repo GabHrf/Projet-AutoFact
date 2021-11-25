@@ -88,6 +88,7 @@ namespace Autofact
             this.label_nom.Size = new System.Drawing.Size(37, 17);
             this.label_nom.TabIndex = 4;
             this.label_nom.Text = "Nom";
+            this.label_nom.Click += new System.EventHandler(this.label_nom_Click);
             // 
             // label_prenom
             // 
