@@ -44,5 +44,12 @@ namespace Autofact
             ProfilUser x = new ProfilUser();
             x.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Devis x = new Devis();
+            x.Show();
+        }
     }
 }

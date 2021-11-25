@@ -29,7 +29,6 @@ namespace Autofact
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_deconnexion = new System.Windows.Forms.Button();
             this.btn_profil = new System.Windows.Forms.Button();
             this.btn_clients = new System.Windows.Forms.Button();
@@ -50,13 +49,16 @@ namespace Autofact
             this.btn_actupresta = new System.Windows.Forms.Button();
             this.box_montanttotal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Quantité = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_converttoword = new System.Windows.Forms.Button();
+            this.btn_converttopdf = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvpresta)).BeginInit();
             this.SuspendLayout();
@@ -93,6 +95,7 @@ namespace Autofact
             // 
             // dgvclient
             // 
+            this.dgvclient.AllowUserToAddRows = false;
             this.dgvclient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvclient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idclie,
@@ -216,7 +219,6 @@ namespace Autofact
             this.dgvpresta.RowTemplate.Height = 24;
             this.dgvpresta.Size = new System.Drawing.Size(782, 270);
             this.dgvpresta.TabIndex = 29;
-            this.dgvpresta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvpresta_CellContentClick);
             // 
             // btn_actucli
             // 
@@ -255,28 +257,19 @@ namespace Autofact
             this.label4.TabIndex = 35;
             this.label4.Text = "Montant total :";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(757, 418);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 36;
-            this.button2.Text = "button2";
+            this.button2.Text = "Calculer";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Quantité
             // 
             this.Quantité.DataPropertyName = "QUANTITÉ";
-            dataGridViewCellStyle1.NullValue = "1";
-            this.Quantité.DefaultCellStyle = dataGridViewCellStyle1;
             this.Quantité.HeaderText = "Quantité";
             this.Quantité.Items.AddRange(new object[] {
             "0",
@@ -301,7 +294,6 @@ namespace Autofact
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // dataGridViewTextBoxColumn2
@@ -328,13 +320,56 @@ namespace Autofact
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 125;
             // 
+            // btn_converttoword
+            // 
+            this.btn_converttoword.Location = new System.Drawing.Point(912, 560);
+            this.btn_converttoword.Name = "btn_converttoword";
+            this.btn_converttoword.Size = new System.Drawing.Size(165, 34);
+            this.btn_converttoword.TabIndex = 37;
+            this.btn_converttoword.Text = "Générer un Word";
+            this.btn_converttoword.UseVisualStyleBackColor = true;
+            this.btn_converttoword.Click += new System.EventHandler(this.btn_converttoword_Click);
+            // 
+            // btn_converttopdf
+            // 
+            this.btn_converttopdf.Location = new System.Drawing.Point(1118, 560);
+            this.btn_converttopdf.Name = "btn_converttopdf";
+            this.btn_converttopdf.Size = new System.Drawing.Size(165, 34);
+            this.btn_converttopdf.TabIndex = 38;
+            this.btn_converttopdf.Text = "Générer un PDF";
+            this.btn_converttopdf.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Facture",
+            "Devis",
+            "Avoir"});
+            this.comboBox1.Location = new System.Drawing.Point(727, 570);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(141, 24);
+            this.comboBox1.TabIndex = 39;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(587, 573);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(134, 17);
+            this.label5.TabIndex = 40;
+            this.label5.Text = "Type du document :";
+            // 
             // Devis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1509, 637);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btn_converttopdf);
+            this.Controls.Add(this.btn_converttoword);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.box_montanttotal);
             this.Controls.Add(this.btn_actupresta);
@@ -382,12 +417,15 @@ namespace Autofact
         private System.Windows.Forms.Button btn_actupresta;
         private System.Windows.Forms.TextBox box_montanttotal;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewComboBoxColumn Quantité;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button btn_converttoword;
+        private System.Windows.Forms.Button btn_converttopdf;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label5;
     }
 }

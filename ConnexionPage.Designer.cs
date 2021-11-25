@@ -127,6 +127,7 @@
             this.Controls.Add(this.labelConnexion);
             this.Name = "ConnexionPage";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.ConnexionPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

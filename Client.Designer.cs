@@ -89,6 +89,7 @@ namespace Autofact
             // 
             // dgvclient
             // 
+            this.dgvclient.AllowUserToAddRows = false;
             this.dgvclient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvclient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idclie,

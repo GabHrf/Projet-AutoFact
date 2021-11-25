@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
+using Spire.Doc;
 
 namespace Autofact
 {
@@ -90,47 +92,47 @@ namespace Autofact
             dgvpresta.DataSource = dtbl;
         }
 
-        private void box_montanttotale_Load(object sender, EventArgs e)
-        {
-            double sum = 0;
-            for (int i = 0; i < dgvpresta.Rows.Count; ++i)
-            {
-                sum += Convert.ToDouble(dgvpresta.Rows[i].Cells[3].Value);
-            }
-            box_montanttotal.Text = sum.ToString();
-        }
-
-        private bool verifcheckbox()
-        {
-            bool verif = false;
-            foreach (DataGridViewRow row in dgvpresta.Rows)
-            {
-                if (Convert.ToBoolean(row.Cells[1].Value))
-                {
-                    verif = true;
-                }
-            }
-            return verif;
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            double somme = 0.00;
+            double somme = 0;
             foreach (DataGridViewRow row in dgvpresta.Rows)
             {
-
-
                 somme += Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
-
-                
-
             }
             box_montanttotal.Text = somme.ToString();
         }
 
-        private void dgvpresta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btn_converttoword_Click(object sender, EventArgs e)
         {
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
+            MySqlConnection conn = new MySqlConnection(connectionString);
 
+
+
+            //initialize word object  
+            Document doc = new Document();
+            doc.LoadFromFile("C:/Users/gabri/Desktop/Projet/AutoFact/facture/devis-temp.doc");
+            //get strings to replace  
+            Dictionary<string, string> dictReplace = GetReplaceDictionary();
+            //Replace text  
+            foreach (KeyValuePair<string, string> kvp in dictReplace)
+            {
+                doc.Replace(kvp.Key, kvp.Value, true, true);
+            }
+            //Save doc file.  
+            Document.SaveToFile("Bureau", FileFormat.Docx);
+            //Convert to PDF  
+            /*document.SaveToFile(pdfPath, FileFormat.PDF);
+            MessageBox.Show("All tasks are finished.", "doc processing", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            document.Close();*/
+        }
+
+        Dictionary<string, string> GetReplaceDictionary()
+        {
+            Dictionary<string, string> replaceDict = new Dictionary<string, string>();
+            replaceDict.Add("#nom#", box_nom.Text.Trim());
+            replaceDict.Add("#prenom#", box_prenom.Text);
+            return replaceDict;
         }
     }
 }

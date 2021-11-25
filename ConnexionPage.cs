@@ -78,6 +78,11 @@ namespace Autofact
                 btn_connexion_Click(sender, e);
             }
         }
+
+        private void ConnexionPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 
