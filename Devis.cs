@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
-using Spire.Doc;
+using Syncfusion.DocIO.DLS;
 
 namespace Autofact
 {
@@ -51,6 +51,7 @@ namespace Autofact
         {
             box_prenom.Clear();
             box_nom.Clear();
+            box_adresse.Clear();
             ID = 0;
         }
 
@@ -63,6 +64,7 @@ namespace Autofact
             ID = Convert.ToInt32(selectedRow.Cells[0].Value.ToString());
             box_nom.Text = selectedRow.Cells[1].Value.ToString();
             box_prenom.Text = selectedRow.Cells[2].Value.ToString();
+            box_adresse.Text = selectedRow.Cells[3].Value.ToString();
         }
 
         private void btn_actucli_Click(object sender, EventArgs e)
@@ -92,7 +94,7 @@ namespace Autofact
             dgvpresta.DataSource = dtbl;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_calcul_Click(object sender, EventArgs e)
         {
             double somme = 0;
             foreach (DataGridViewRow row in dgvpresta.Rows)
@@ -107,32 +109,60 @@ namespace Autofact
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
 
-
-
-            //initialize word object  
-            Document doc = new Document();
-            doc.LoadFromFile("C:/Users/gabri/Desktop/Projet/AutoFact/facture/devis-temp.doc");
-            //get strings to replace  
-            Dictionary<string, string> dictReplace = GetReplaceDictionary();
-            //Replace text  
-            foreach (KeyValuePair<string, string> kvp in dictReplace)
+            if (ID != 0)
             {
-                doc.Replace(kvp.Key, kvp.Value, true, true);
+                foreach (DataGridViewRow row in dgvpresta.Rows)
+                {
+                    if (int.Parse(row.Cells[0].Value.ToString()) > 0)
+                    {
+                        WordDocument document = new WordDocument();
+                        Stream docStream = File.OpenRead(Path.GetFullPath(@"C:/Users/gabri/Desktop/Projet/AutoFact/facture/devis-temp.doc"));
+                        document.Open(docStream, Syncfusion.DocIO.FormatType.Doc);
+                        docStream.Dispose();
+
+                        document.Replace("#idcli#", ID.ToString(), true, true);
+                        document.Replace("#nom#", box_nom.Text, true, true);
+                        document.Replace("#prenom#", box_prenom.Text, true, true);
+                        document.Replace("#adresse#", box_adresse.Text, true, true);
+
+                        WTable presta = new WTable(document);
+                        presta.ResetCells(1, 4);
+                        presta[0, 0].Width = 80f;
+                        presta[0, 0].AddParagraph().AppendText("Quantité");
+                        presta[0, 1].Width = 130f;
+                        presta[0, 1].AddParagraph().AppendText("Prestation");
+                        presta[0, 2].Width = 80f;
+                        presta[0, 2].AddParagraph().AppendText("Prix unitaire HT");
+                        presta[0, 3].Width = 90f;
+                        presta[0, 3].AddParagraph().AppendText("Prix total HT");
+
+                       
+                        
+                        TextBodyPart bodyPart = new TextBodyPart(document);
+                        bodyPart.BodyItems.Add(presta);
+                        document.Replace("#tablepresta#", bodyPart, true, true, true);
+
+                        document.Replace("#qtt#", row.Cells[0].Value.ToString(), true, true);
+                        document.Replace("#prestalib#", row.Cells[2].Value.ToString(), true, true);
+                        document.Replace("#prix#", row.Cells[3].Value.ToString(), true, true);
+
+                        docStream = File.Create(Path.GetFullPath(@"C:\Users\gabri\Desktop\test\Result.doc"));
+                        document.Save(docStream, Syncfusion.DocIO.FormatType.Doc);
+                        docStream.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selectionnez une quantité dans les prestations !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                
             }
-            //Save doc file.  
-            Document.SaveToFile("Bureau", FileFormat.Docx);
-            //Convert to PDF  
-            /*document.SaveToFile(pdfPath, FileFormat.PDF);
-            MessageBox.Show("All tasks are finished.", "doc processing", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            document.Close();*/
+            else
+            {
+                MessageBox.Show("Selectionnez un client ainsi que ses prestations !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
-        Dictionary<string, string> GetReplaceDictionary()
-        {
-            Dictionary<string, string> replaceDict = new Dictionary<string, string>();
-            replaceDict.Add("#nom#", box_nom.Text.Trim());
-            replaceDict.Add("#prenom#", box_prenom.Text);
-            return replaceDict;
-        }
     }
 }

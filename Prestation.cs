@@ -40,7 +40,7 @@ namespace Autofact
             x.Show();
         }
 
-        private void dgvclient_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvpresta_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
             DataGridViewRow selectedRow = dgvpresta.Rows[index];

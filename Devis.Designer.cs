@@ -45,20 +45,22 @@ namespace Autofact
             this.label3 = new System.Windows.Forms.Label();
             this.label_dgvprest = new System.Windows.Forms.Label();
             this.dgvpresta = new System.Windows.Forms.DataGridView();
-            this.btn_actucli = new System.Windows.Forms.Button();
-            this.btn_actupresta = new System.Windows.Forms.Button();
-            this.box_montanttotal = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.Quantité = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_actucli = new System.Windows.Forms.Button();
+            this.btn_actupresta = new System.Windows.Forms.Button();
+            this.box_montanttotal = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btn_calcul = new System.Windows.Forms.Button();
             this.btn_converttoword = new System.Windows.Forms.Button();
             this.btn_converttopdf = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.box_adresse = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvpresta)).BeginInit();
             this.SuspendLayout();
@@ -220,53 +222,6 @@ namespace Autofact
             this.dgvpresta.Size = new System.Drawing.Size(782, 270);
             this.dgvpresta.TabIndex = 29;
             // 
-            // btn_actucli
-            // 
-            this.btn_actucli.Location = new System.Drawing.Point(476, 33);
-            this.btn_actucli.Name = "btn_actucli";
-            this.btn_actucli.Size = new System.Drawing.Size(160, 27);
-            this.btn_actucli.TabIndex = 32;
-            this.btn_actucli.Text = "Actualiser Clients";
-            this.btn_actucli.UseVisualStyleBackColor = true;
-            this.btn_actucli.Click += new System.EventHandler(this.btn_actucli_Click);
-            // 
-            // btn_actupresta
-            // 
-            this.btn_actupresta.Location = new System.Drawing.Point(1173, 33);
-            this.btn_actupresta.Name = "btn_actupresta";
-            this.btn_actupresta.Size = new System.Drawing.Size(163, 28);
-            this.btn_actupresta.TabIndex = 33;
-            this.btn_actupresta.Text = "Actualiser Prestation";
-            this.btn_actupresta.UseVisualStyleBackColor = true;
-            this.btn_actupresta.Click += new System.EventHandler(this.btn_actupresta_Click);
-            // 
-            // box_montanttotal
-            // 
-            this.box_montanttotal.Location = new System.Drawing.Point(867, 418);
-            this.box_montanttotal.Name = "box_montanttotal";
-            this.box_montanttotal.ReadOnly = true;
-            this.box_montanttotal.Size = new System.Drawing.Size(210, 22);
-            this.box_montanttotal.TabIndex = 34;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(864, 384);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 17);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Montant total :";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(757, 418);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 36;
-            this.button2.Text = "Calculer";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Quantité
             // 
             this.Quantité.DataPropertyName = "QUANTITÉ";
@@ -320,6 +275,53 @@ namespace Autofact
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 125;
             // 
+            // btn_actucli
+            // 
+            this.btn_actucli.Location = new System.Drawing.Point(476, 33);
+            this.btn_actucli.Name = "btn_actucli";
+            this.btn_actucli.Size = new System.Drawing.Size(160, 27);
+            this.btn_actucli.TabIndex = 32;
+            this.btn_actucli.Text = "Actualiser Clients";
+            this.btn_actucli.UseVisualStyleBackColor = true;
+            this.btn_actucli.Click += new System.EventHandler(this.btn_actucli_Click);
+            // 
+            // btn_actupresta
+            // 
+            this.btn_actupresta.Location = new System.Drawing.Point(1173, 33);
+            this.btn_actupresta.Name = "btn_actupresta";
+            this.btn_actupresta.Size = new System.Drawing.Size(163, 28);
+            this.btn_actupresta.TabIndex = 33;
+            this.btn_actupresta.Text = "Actualiser Prestation";
+            this.btn_actupresta.UseVisualStyleBackColor = true;
+            this.btn_actupresta.Click += new System.EventHandler(this.btn_actupresta_Click);
+            // 
+            // box_montanttotal
+            // 
+            this.box_montanttotal.Location = new System.Drawing.Point(867, 418);
+            this.box_montanttotal.Name = "box_montanttotal";
+            this.box_montanttotal.ReadOnly = true;
+            this.box_montanttotal.Size = new System.Drawing.Size(210, 22);
+            this.box_montanttotal.TabIndex = 34;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(864, 384);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 17);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Montant total :";
+            // 
+            // btn_calcul
+            // 
+            this.btn_calcul.Location = new System.Drawing.Point(757, 418);
+            this.btn_calcul.Name = "btn_calcul";
+            this.btn_calcul.Size = new System.Drawing.Size(75, 23);
+            this.btn_calcul.TabIndex = 36;
+            this.btn_calcul.Text = "Calculer";
+            this.btn_calcul.UseVisualStyleBackColor = true;
+            this.btn_calcul.Click += new System.EventHandler(this.btn_calcul_Click);
+            // 
             // btn_converttoword
             // 
             this.btn_converttoword.Location = new System.Drawing.Point(912, 560);
@@ -360,16 +362,35 @@ namespace Autofact
             this.label5.TabIndex = 40;
             this.label5.Text = "Type du document :";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(237, 531);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 17);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "Adresse :";
+            // 
+            // box_adresse
+            // 
+            this.box_adresse.Location = new System.Drawing.Point(240, 551);
+            this.box_adresse.Name = "box_adresse";
+            this.box_adresse.ReadOnly = true;
+            this.box_adresse.Size = new System.Drawing.Size(133, 22);
+            this.box_adresse.TabIndex = 41;
+            // 
             // Devis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1509, 637);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.box_adresse);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btn_converttopdf);
             this.Controls.Add(this.btn_converttoword);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_calcul);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.box_montanttotal);
             this.Controls.Add(this.btn_actupresta);
@@ -417,7 +438,7 @@ namespace Autofact
         private System.Windows.Forms.Button btn_actupresta;
         private System.Windows.Forms.TextBox box_montanttotal;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_calcul;
         private System.Windows.Forms.DataGridViewComboBoxColumn Quantité;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -427,5 +448,7 @@ namespace Autofact
         private System.Windows.Forms.Button btn_converttopdf;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox box_adresse;
     }
 }

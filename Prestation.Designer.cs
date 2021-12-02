@@ -33,16 +33,16 @@ namespace Autofact
             this.btn_profil = new System.Windows.Forms.Button();
             this.btn_deconnexion = new System.Windows.Forms.Button();
             this.dgvpresta = new System.Windows.Forms.DataGridView();
+            this.idclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prenomclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adresseclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.box_tva = new System.Windows.Forms.TextBox();
             this.box_prix = new System.Windows.Forms.TextBox();
             this.box_prestation = new System.Windows.Forms.TextBox();
             this.label_prestation = new System.Windows.Forms.Label();
             this.label_prix = new System.Windows.Forms.Label();
             this.label_tva = new System.Windows.Forms.Label();
-            this.idclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prenomclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adresseclie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_createpresta = new System.Windows.Forms.Button();
             this.label_dgvprest = new System.Windows.Forms.Label();
             this.btn_actupresta = new System.Windows.Forms.Button();
@@ -95,7 +95,39 @@ namespace Autofact
             this.dgvpresta.RowTemplate.Height = 24;
             this.dgvpresta.Size = new System.Drawing.Size(711, 285);
             this.dgvpresta.TabIndex = 4;
-            this.dgvpresta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvclient_CellClick);
+            this.dgvpresta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvpresta_CellClick);
+            // 
+            // idclie
+            // 
+            this.idclie.DataPropertyName = "IDPRESTATION";
+            this.idclie.HeaderText = "Id Prestation";
+            this.idclie.MinimumWidth = 6;
+            this.idclie.Name = "idclie";
+            this.idclie.Width = 125;
+            // 
+            // nomclie
+            // 
+            this.nomclie.DataPropertyName = "LIBELLE";
+            this.nomclie.HeaderText = "Libelle";
+            this.nomclie.MinimumWidth = 6;
+            this.nomclie.Name = "nomclie";
+            this.nomclie.Width = 125;
+            // 
+            // prenomclie
+            // 
+            this.prenomclie.DataPropertyName = "PRIX";
+            this.prenomclie.HeaderText = "Prix";
+            this.prenomclie.MinimumWidth = 6;
+            this.prenomclie.Name = "prenomclie";
+            this.prenomclie.Width = 125;
+            // 
+            // adresseclie
+            // 
+            this.adresseclie.DataPropertyName = "TVA";
+            this.adresseclie.HeaderText = "TVA";
+            this.adresseclie.MinimumWidth = 6;
+            this.adresseclie.Name = "adresseclie";
+            this.adresseclie.Width = 125;
             // 
             // box_tva
             // 
@@ -144,38 +176,6 @@ namespace Autofact
             this.label_tva.Size = new System.Drawing.Size(35, 17);
             this.label_tva.TabIndex = 19;
             this.label_tva.Text = "TVA";
-            // 
-            // idclie
-            // 
-            this.idclie.DataPropertyName = "IDPRESTATION";
-            this.idclie.HeaderText = "Id Prestation";
-            this.idclie.MinimumWidth = 6;
-            this.idclie.Name = "idclie";
-            this.idclie.Width = 125;
-            // 
-            // nomclie
-            // 
-            this.nomclie.DataPropertyName = "LIBELLE";
-            this.nomclie.HeaderText = "Libelle";
-            this.nomclie.MinimumWidth = 6;
-            this.nomclie.Name = "nomclie";
-            this.nomclie.Width = 125;
-            // 
-            // prenomclie
-            // 
-            this.prenomclie.DataPropertyName = "PRIX";
-            this.prenomclie.HeaderText = "Prix";
-            this.prenomclie.MinimumWidth = 6;
-            this.prenomclie.Name = "prenomclie";
-            this.prenomclie.Width = 125;
-            // 
-            // adresseclie
-            // 
-            this.adresseclie.DataPropertyName = "TVA";
-            this.adresseclie.HeaderText = "TVA";
-            this.adresseclie.MinimumWidth = 6;
-            this.adresseclie.Name = "adresseclie";
-            this.adresseclie.Width = 125;
             // 
             // btn_createpresta
             // 

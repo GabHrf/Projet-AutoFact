@@ -103,7 +103,7 @@ namespace Autofact
             }
             else
             {
-                MessageBox.Show("Selectionnez un client à modifier");
+                MessageBox.Show("Selectionnez un client à modifier !!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -131,7 +131,7 @@ namespace Autofact
             }
             else
             {
-                MessageBox.Show("Selectionnez un client à supprimer");
+                MessageBox.Show("Selectionnez un client à supprimer !!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
