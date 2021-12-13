@@ -57,7 +57,7 @@ namespace Autofact
             this.btn_calcul = new System.Windows.Forms.Button();
             this.btn_converttoword = new System.Windows.Forms.Button();
             this.btn_converttopdf = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.box_adresse = new System.Windows.Forms.TextBox();
@@ -221,6 +221,7 @@ namespace Autofact
             this.dgvpresta.RowTemplate.Height = 24;
             this.dgvpresta.Size = new System.Drawing.Size(782, 270);
             this.dgvpresta.TabIndex = 29;
+            this.dgvpresta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvpresta_CellClick);
             // 
             // Quantité
             // 
@@ -341,17 +342,17 @@ namespace Autofact
             this.btn_converttopdf.Text = "Générer un PDF";
             this.btn_converttopdf.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // comboBoxType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Items.AddRange(new object[] {
             "Facture",
             "Devis",
             "Avoir"});
-            this.comboBox1.Location = new System.Drawing.Point(727, 570);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(141, 24);
-            this.comboBox1.TabIndex = 39;
+            this.comboBoxType.Location = new System.Drawing.Point(727, 570);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(141, 24);
+            this.comboBoxType.TabIndex = 39;
             // 
             // label5
             // 
@@ -387,7 +388,7 @@ namespace Autofact
             this.Controls.Add(this.label6);
             this.Controls.Add(this.box_adresse);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.btn_converttopdf);
             this.Controls.Add(this.btn_converttoword);
             this.Controls.Add(this.btn_calcul);
@@ -446,7 +447,7 @@ namespace Autofact
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Button btn_converttoword;
         private System.Windows.Forms.Button btn_converttopdf;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox box_adresse;

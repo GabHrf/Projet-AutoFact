@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using System.IO;
+﻿using MySql.Data.MySqlClient;
 using Syncfusion.DocIO.DLS;
+using System;
+using System.Data;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Autofact
 {
@@ -19,7 +13,8 @@ namespace Autofact
         {
             InitializeComponent();
         }
-        int ID = 0;
+        int IDCli = 0;
+        int Qtt = 0;
 
         private void btn_clients_Click(object sender, EventArgs e)
         {
@@ -52,16 +47,16 @@ namespace Autofact
             box_prenom.Clear();
             box_nom.Clear();
             box_adresse.Clear();
-            ID = 0;
+            IDCli = 0;
         }
 
-        
+
 
         private void dgvclient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
             DataGridViewRow selectedRow = dgvclient.Rows[index];
-            ID = Convert.ToInt32(selectedRow.Cells[0].Value.ToString());
+            IDCli = Convert.ToInt32(selectedRow.Cells[0].Value.ToString());
             box_nom.Text = selectedRow.Cells[1].Value.ToString();
             box_prenom.Text = selectedRow.Cells[2].Value.ToString();
             box_adresse.Text = selectedRow.Cells[3].Value.ToString();
@@ -108,61 +103,59 @@ namespace Autofact
         {
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
+            conn.Open();
 
-            if (ID != 0)
+            if (IDCli != 0 && Qtt != 0 && comboBoxType.SelectedIndex > -1)
             {
                 foreach (DataGridViewRow row in dgvpresta.Rows)
                 {
-                    if (int.Parse(row.Cells[0].Value.ToString()) > 0)
-                    {
-                        WordDocument document = new WordDocument();
-                        Stream docStream = File.OpenRead(Path.GetFullPath(@"C:/Users/gabri/Desktop/Projet/AutoFact/facture/devis-temp.doc"));
-                        document.Open(docStream, Syncfusion.DocIO.FormatType.Doc);
-                        docStream.Dispose();
+                    WordDocument document = new WordDocument();
+                    Stream docStream = File.OpenRead(Path.GetFullPath(@"C:/Users/gabri/Desktop/Projet/AutoFact/facture/devis-temp.doc"));
+                    document.Open(docStream, Syncfusion.DocIO.FormatType.Doc);
+                    docStream.Dispose();
 
-                        document.Replace("#idcli#", ID.ToString(), true, true);
-                        document.Replace("#nom#", box_nom.Text, true, true);
-                        document.Replace("#prenom#", box_prenom.Text, true, true);
-                        document.Replace("#adresse#", box_adresse.Text, true, true);
+                    document.Replace("#idcli#", IDCli.ToString(), true, true);
+                    document.Replace("#nom#", box_nom.Text, true, true);
+                    document.Replace("#prenom#", box_prenom.Text, true, true);
+                    document.Replace("#adresse#", box_adresse.Text, true, true);
+                    document.Replace("#typedoc#", comboBoxType.Text, true, true);
 
-                        WTable presta = new WTable(document);
-                        presta.ResetCells(1, 4);
-                        presta[0, 0].Width = 80f;
-                        presta[0, 0].AddParagraph().AppendText("Quantité");
-                        presta[0, 1].Width = 130f;
-                        presta[0, 1].AddParagraph().AppendText("Prestation");
-                        presta[0, 2].Width = 80f;
-                        presta[0, 2].AddParagraph().AppendText("Prix unitaire HT");
-                        presta[0, 3].Width = 90f;
-                        presta[0, 3].AddParagraph().AppendText("Prix total HT");
+                    document.Replace("#qtt#", Qtt.ToString(), true, true);
+                    document.Replace("#prestalib#", row.Cells[2].Value.ToString(), true, true);
+                    document.Replace("#prix#", row.Cells[3].Value.ToString(), true, true);
 
-                       
-                        
-                        TextBodyPart bodyPart = new TextBodyPart(document);
-                        bodyPart.BodyItems.Add(presta);
-                        document.Replace("#tablepresta#", bodyPart, true, true, true);
+                    docStream = File.Create(Path.GetFullPath(@"C:\Users\gabri\Desktop\test\Result+" + DateTime.Now.ToString("dd-MM-yyyy-HH-mm") + ".doc"));
+                    document.Save(docStream, Syncfusion.DocIO.FormatType.Doc);
+                    docStream.Dispose();
 
-                        document.Replace("#qtt#", row.Cells[0].Value.ToString(), true, true);
-                        document.Replace("#prestalib#", row.Cells[2].Value.ToString(), true, true);
-                        document.Replace("#prix#", row.Cells[3].Value.ToString(), true, true);
-
-                        docStream = File.Create(Path.GetFullPath(@"C:\Users\gabri\Desktop\test\Result.doc"));
-                        document.Save(docStream, Syncfusion.DocIO.FormatType.Doc);
-                        docStream.Dispose();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Selectionnez une quantité dans les prestations !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    /*string insertConserve = "INSERT INTO `conserve`(`IDDOCUMENT`, `IDPRESTATION`, `QUANTITÉ`) VALUES (8, '" + row.Cells[1].Value.ToString() + "', '" + Qtt.ToString() + "');";
+                    MySqlCommand cmd1 = new MySqlCommand(insertConserve, conn);
+                    cmd1.ExecuteNonQuery();*/
                 }
-                
+                string format = "yyyy-MM-dd HH:mm:ss";
+                string typee = "SELECT `IDTYPE` FROM `type` WHERE `LIBELLE` = '"+comboBoxType.SelectedItem+"'";
+                int type = Convert.ToInt32(typee);
+                string insertDocument = "INSERT INTO `document`(`IDUTILISATEUR`, `IDCLIENT`, `NUMERO`) VALUES (01,'" + IDCli + "',0001);";
+                string insertDevenir = "INSERT INTO `devenir`(`IDDOCUMENT`, `IDTYPE`, `DATEDOC`) VALUES (1, '"+type+"','" + DateTime.Now.ToString(format) + "');";
+                MySqlCommand cmd = new MySqlCommand(insertDocument, conn);
+                cmd.ExecuteNonQuery();
+                MySqlCommand cmd2 = new MySqlCommand(insertDevenir, conn);
+                cmd2.ExecuteNonQuery();
+                MessageBox.Show("Fichier word généré !", "Success", MessageBoxButtons.OK);
+
             }
             else
             {
                 MessageBox.Show("Selectionnez un client ainsi que ses prestations !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
+        private void dgvpresta_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = dgvclient.Rows[index];
+            Qtt = Convert.ToInt32(selectedRow.Cells[0].Value.ToString());
+        }
     }
 }
