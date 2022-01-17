@@ -104,6 +104,13 @@ namespace Autofact
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
             conn.Open();
+            
+            // Get ID utilisateur pour insert en bdd 
+            string mailutilisateur = ConnexionPage.utilisateur;
+
+            string selectidutmail = "SELECT `IDUTILISATEUR` FROM `utilisateur` WHERE `MAIL`= '"+mailutilisateur+"'";
+            MySqlCommand mail = new MySqlCommand(selectidutmail, conn);
+            int idu = int.Parse(mail.ExecuteScalar().ToString());
 
             if (IDCli != 0 && Qtt != 0 && comboBoxType.SelectedIndex > -1)
             {
@@ -119,6 +126,7 @@ namespace Autofact
                     document.Replace("#prenom#", box_prenom.Text, true, true);
                     document.Replace("#adresse#", box_adresse.Text, true, true);
                     document.Replace("#typedoc#", comboBoxType.Text, true, true);
+                    document.Replace("#idutilisateur#", idu.ToString(), true, true);
 
                     document.Replace("#qtt#", Qtt.ToString(), true, true);
                     document.Replace("#prestalib#", row.Cells[2].Value.ToString(), true, true);
@@ -132,15 +140,15 @@ namespace Autofact
                     MySqlCommand cmd1 = new MySqlCommand(insertConserve, conn);
                     cmd1.ExecuteNonQuery();*/
                 }
-                string format = "yyyy-MM-dd HH:mm:ss";
-                string typee = "SELECT `IDTYPE` FROM `type` WHERE `LIBELLE` = '"+comboBoxType.SelectedItem+"'";
-                int type = Convert.ToInt32(typee);
-                string insertDocument = "INSERT INTO `document`(`IDUTILISATEUR`, `IDCLIENT`, `NUMERO`) VALUES (01,'" + IDCli + "',0001);";
-                string insertDevenir = "INSERT INTO `devenir`(`IDDOCUMENT`, `IDTYPE`, `DATEDOC`) VALUES (1, '"+type+"','" + DateTime.Now.ToString(format) + "');";
-                MySqlCommand cmd = new MySqlCommand(insertDocument, conn);
-                cmd.ExecuteNonQuery();
-                MySqlCommand cmd2 = new MySqlCommand(insertDevenir, conn);
-                cmd2.ExecuteNonQuery();
+                //string format = "yyyy-MM-dd HH:mm:ss";
+                //string typee = "SELECT `IDTYPE` FROM `type` WHERE `LIBELLE` = '"+comboBoxType.SelectedItem+"'";
+                //int type = Convert.ToInt32(typee);
+                //string insertDocument = "INSERT INTO `document`(`IDUTILISATEUR`, `IDCLIENT`, `NUMERO`) VALUES (01,'" + IDCli + "',0001);";
+                //string insertDevenir = "INSERT INTO `devenir`(`IDDOCUMENT`, `IDTYPE`, `DATEDOC`) VALUES (1, '"+type+"','" + DateTime.Now.ToString(format) + "');";
+                //MySqlCommand cmd = new MySqlCommand(insertDocument, conn);
+                //cmd.ExecuteNonQuery();
+                //MySqlCommand cmd2 = new MySqlCommand(insertDevenir, conn);
+                //cmd2.ExecuteNonQuery();
                 MessageBox.Show("Fichier word généré !", "Success", MessageBoxButtons.OK);
 
             }

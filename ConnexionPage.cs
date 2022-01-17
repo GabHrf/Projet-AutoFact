@@ -14,6 +14,8 @@ namespace Autofact
 {
     public partial class ConnexionPage : Form
     {
+        public static string utilisateur;
+
         public ConnexionPage()
         {
             InitializeComponent();
@@ -29,7 +31,8 @@ namespace Autofact
 
         private void btn_connexion_Click(object sender, EventArgs e)
         {
-            
+            utilisateur = box_mail.Text;
+
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
 
