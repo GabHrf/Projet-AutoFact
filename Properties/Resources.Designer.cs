@@ -83,6 +83,66 @@ namespace Autofact.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_country_house_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-country-house-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_macos_fermer_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-macos-fermer-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_macos_fermer_96__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-macos-fermer-96 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_réduire_la_fenêtre_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-réduire-la-fenêtre-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_utilisateur_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-utilisateur-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo_Autofact {
+            get {
+                object obj = ResourceManager.GetObject("Logo_Autofact", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap modifier {
             get {
                 object obj = ResourceManager.GetObject("modifier", resourceCulture);
@@ -96,6 +156,16 @@ namespace Autofact.Properties {
         internal static System.Drawing.Bitmap supprimer {
             get {
                 object obj = ResourceManager.GetObject("supprimer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap téléchargement {
+            get {
+                object obj = ResourceManager.GetObject("téléchargement", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

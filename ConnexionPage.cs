@@ -1,24 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using BCrypt.Net;
 
 namespace Autofact
 {
     public partial class ConnexionPage : Form
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // width of ellipse
+            int nHeightEllipse // height of ellipse
+        );
+
         public static string utilisateur;
 
         public ConnexionPage()
         {
             InitializeComponent();
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 12, 12));
         }
 
         private void btn_inscription_Click(object sender, EventArgs e)
@@ -26,16 +31,19 @@ namespace Autofact
             Hide();
             InscriptionPage x = new InscriptionPage();
             x.Show();
-            
+
         }
 
         private void btn_connexion_Click(object sender, EventArgs e)
         {
+            //On récupère l'email de connexion pour garder l'identification
             utilisateur = box_mail.Text;
 
+            //Connexion a la BDD
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
 
+            //On verifie si les cases ne sont pas vides
             if (box_mail.Text != string.Empty && box_mdp.Text != string.Empty)
             {
                 conn.Open();
@@ -43,7 +51,8 @@ namespace Autofact
                 MySqlCommand cmdSalt = new MySqlCommand(selectsalt, conn);
                 string salt = cmdSalt.ExecuteScalar().ToString();
 
-                string select = "SELECT `MAIL`, `MDP` FROM `utilisateur` WHERE `MAIL`= '"+box_mail.Text+"' AND `MDP`= '"+BCrypt.Net.BCrypt.HashPassword(box_mdp.Text, salt)+"'";
+                //On verifie si le SALT du MDP stocker correspond bien avec l'utilisateur
+                string select = "SELECT `MAIL`, `MDP` FROM `utilisateur` WHERE `MAIL`= '" + box_mail.Text + "' AND `MDP`= '" + BCrypt.Net.BCrypt.HashPassword(box_mdp.Text, salt) + "'";
                 MySqlCommand read = new MySqlCommand(select, conn);
                 MySqlDataReader rd = read.ExecuteReader();
                 if (rd.Read())
@@ -51,13 +60,13 @@ namespace Autofact
                     rd.Close();
                     MessageBox.Show("Vous venez de vous connectez");
                     Hide();
-                    Accueil x = new Accueil();
+                    FormMain x = new FormMain();
                     x.Show();
                 }
                 else
                 {
                     MessageBox.Show("Informations incorrectes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
+
                 }
             }
             else
@@ -86,6 +95,44 @@ namespace Autofact
         {
 
         }
+
+        /*
+        //DEBUT -- Bouton barre de naviguation
+        */
+        private void btn_leave_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_minimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        bool flag = false;
+        private void paneldrag_MouseDown(object sender, MouseEventArgs e)
+        {
+            flag = true;
+        }
+
+        private void paneldrag_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (flag == true)
+
+            {
+
+                this.Location = Cursor.Position;
+
+            }
+        }
+
+        private void paneldrag_MouseUp(object sender, MouseEventArgs e)
+        {
+            flag = false;
+        }
+        /*
+//FIN -- Bouton barre de naviguation
+*/
     }
-    }
+}
 

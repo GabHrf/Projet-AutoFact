@@ -22,25 +22,7 @@ namespace Autofact
             displayData();
         }
 
-        private void Client_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_deconnexion_Click(object sender, EventArgs e)
-        {
-            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-
-            conn.Close();
-
-            MessageBox.Show("Vous venez de vous déconnectez");
-            Hide();
-            ConnexionPage x = new ConnexionPage();
-            x.Show();
-        }
-
-        private void displayData()
+        private void displayData()      //Permet d'actualiser automatiquement le DGV afin de voir les nouveaux clients 
         {
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
@@ -53,7 +35,7 @@ namespace Autofact
             dgvclient.DataSource = dtbl;
         }
 
-        private void ClearData()
+        private void ClearData()        //Vide les cases Box pour permettre une meilleur possibilite d'insertion d'un autre client
         {
             box_nom.Clear();
             box_prenom.Clear();
@@ -61,7 +43,7 @@ namespace Autofact
             ID = 0;
         }
 
-        private void dgvclient_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvclient_CellClick(object sender, DataGridViewCellEventArgs e)        //Au clic sur le DGV permet de selectionner la ligne du client
         {
             int index = e.RowIndex;
             DataGridViewRow selectedRow = dgvclient.Rows[index];
@@ -71,12 +53,14 @@ namespace Autofact
             box_adresse.Text = selectedRow.Cells[3].Value.ToString();
         }
 
-        private void pictureActualiser_Click(object sender, EventArgs e)
+        private void BtnActualiser_Click(object sender, EventArgs e)        //Bouton qui actualise le DGV en lien avec la BDD
         {
+            //Connexion BDD
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
 
             conn.Open();
+            //Selectionne toutes les donnees de la BDD de la table CLIENT
             MySqlDataAdapter sqlDa = new MySqlDataAdapter("SELECT `IDCLIENT`, `NOM`, `PRENOM`, `ADRESSE` FROM `clients`", conn);
             DataTable dtbl = new DataTable();
             sqlDa.Fill(dtbl);
@@ -85,13 +69,16 @@ namespace Autofact
             ClearData();
         }
 
-        private void pictureModifier_Click(object sender, EventArgs e)
+        private void btnModifier_Click(object sender, EventArgs e)      //Bouton qui modifie le client selectionne sur le DGV en lien avec la BDD
         {
+            //Connexion BDD
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
 
+            //On verifie qu'un client/ligne soit bien selectionne avec son ID
             if (ID != 0)
             {
+                //On modifie les donnees voulus directement en BDD
                 MySqlCommand cmd = new MySqlCommand("UPDATE `clients` SET `NOM`= '" + box_nom.Text + "',`PRENOM`= '" + box_prenom.Text + "',`ADRESSE`='" + box_adresse.Text + "' WHERE `IDCLIENT` = @id", conn);
                 conn.Open();
                 cmd.Parameters.AddWithValue("@id", ID);
@@ -107,19 +94,62 @@ namespace Autofact
             }
         }
 
-        private void pictureAjouter_Click(object sender, EventArgs e)
+        private void BtnAjouter_Click(object sender, EventArgs e)
         {
-            AjoutClients x = new AjoutClients();
-            x.Show();
-        }
-
-        private void pictureSupprimer_Click(object sender, EventArgs e)
-        {
+            //Connexion BDD
             string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
             MySqlConnection conn = new MySqlConnection(connectionString);
 
+            //On verifie qu'aucun client/ligne soit selectionne avec son ID
+            if (ID == 0)
+            {
+                //Verifie que les cases ne soient pas vides
+                if (box_nom.Text != string.Empty && box_prenom.Text != string.Empty && box_adresse.Text != string.Empty)
+                {
+                    //On regarde en BDD si le client n'existe pas deja
+                    conn.Open();
+                    string select = "SELECT `NOM`, `PRENOM` FROM `clients` WHERE `NOM` = '" + box_nom.Text + "' AND `PRENOM` = '" + box_prenom.Text + "'";
+                    MySqlCommand read = new MySqlCommand(select, conn);
+                    MySqlDataReader rd = read.ExecuteReader();
+                    if (rd.Read())
+                    {
+                        rd.Close();
+                        MessageBox.Show("Ce client existe déjà !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        //On insert le client en BDD
+                        rd.Close();
+                        string insert = "INSERT INTO `clients`(`NOM`, `PRENOM`, `ADRESSE`) VALUES ('" + box_nom.Text + "', '" + box_prenom.Text + "', '" + box_adresse.Text + "')";
+                        MySqlCommand cmd = new MySqlCommand(insert, conn);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Ajout de " + box_nom.Text + " " + box_prenom.Text + " réussi");
+
+                        ClearData();
+                        displayData();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez remplir toutes les cases !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Déselectionner un client !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSupp_Click(object sender, EventArgs e)     //Bouton qui supprime un client en BDD
+        {
+            //Connexion BDD
+            string connectionString = "SERVER=localhost; DATABASE=solucedevautofact; UID=root; PASSWORD=''; SSL MODE='none'";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+
+            //On verifie qu'un client/ligne soit bien selectionne avec son ID
             if (ID != 0)
             {
+                //On supprime le client avec son ID
                 MySqlCommand cmd = new MySqlCommand("DELETE FROM `clients` WHERE `IDCLIENT` = @id", conn);
                 conn.Open();
                 cmd.Parameters.AddWithValue("@id", ID);
@@ -135,23 +165,12 @@ namespace Autofact
             }
         }
 
-        private void btn_clients_Click(object sender, EventArgs e)
+        private void btn_detailscli_Click(object sender, EventArgs e)       //Bouton qui nous permet de voir les details d'un client
         {
-            MessageBox.Show("Vous êtes déjà sur la page Client !!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        }
-
-        private void btn_profil_Click(object sender, EventArgs e)
-        {
-            Hide();
-            ProfilUser x = new ProfilUser();
-            x.Show();
-        }
-
-        private void btn_detailscli_Click(object sender, EventArgs e)
-        {
-            if(ID != 0)
+            //On verifie qu'un client/ligne soit bien selectionne avec son ID
+            if (ID != 0)
             {
+                //On transfert directement les donnees du client dans une autre page
                 detailsclient = new detailsclient();
                 detailsclient.nom = box_nom.Text;
                 detailsclient.prenom = box_prenom.Text;
@@ -162,13 +181,12 @@ namespace Autofact
                 MessageBox.Show("Selectionnez un client !!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
+        }     
 
-        private void btn_presta_Click(object sender, EventArgs e)
+        private void btnDeselectionner_Click(object sender, EventArgs e)
         {
-            Hide();
-            Prestation x = new Prestation();
-            x.Show();
+            ID = 0;
+            ClearData();
         }
     }
 }
