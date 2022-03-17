@@ -249,7 +249,6 @@
     <EmbeddedResource Include="RecapTrimestrielUser.resx">
       <DependentUpon>RecapTrimestrielUser.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="template\devis-temp.doc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -278,10 +277,9 @@
     <None Include="Resources\icons8-utilisateur-96.png" />
     <None Include="Resources\Logo_Autofact.PNG" />
     <Content Include="Logo_Autofact-Copie.ico" />
-    <Content Include="ressources\Actualiser.png" />
-    <Content Include="ressources\ajouter.png" />
-    <Content Include="ressources\modifier.png" />
-    <Content Include="ressources\supprimer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="template\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

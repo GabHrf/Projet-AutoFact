@@ -63,26 +63,6 @@ namespace Autofact.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actualiser {
-            get {
-                object obj = ResourceManager.GetObject("Actualiser", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ajouter {
-            get {
-                object obj = ResourceManager.GetObject("ajouter", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_country_house_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-country-house-100", resourceCulture);
@@ -136,26 +116,6 @@ namespace Autofact.Properties {
         internal static System.Drawing.Bitmap Logo_Autofact {
             get {
                 object obj = ResourceManager.GetObject("Logo_Autofact", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap modifier {
-            get {
-                object obj = ResourceManager.GetObject("modifier", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap supprimer {
-            get {
-                object obj = ResourceManager.GetObject("supprimer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
