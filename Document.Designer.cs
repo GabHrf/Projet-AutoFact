@@ -46,6 +46,11 @@ namespace Autofact
             this.label3 = new System.Windows.Forms.Label();
             this.label_dgvprest = new System.Windows.Forms.Label();
             this.dgvpresta = new System.Windows.Forms.DataGridView();
+            this.Quantite = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.box_montanttotal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_calcul = new System.Windows.Forms.Button();
@@ -54,11 +59,6 @@ namespace Autofact
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.box_adresse = new System.Windows.Forms.TextBox();
-            this.Quantite = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvclient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvpresta)).BeginInit();
             this.SuspendLayout();
@@ -245,6 +245,54 @@ namespace Autofact
             this.dgvpresta.TabIndex = 29;
             this.dgvpresta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvpresta_CellClick);
             // 
+            // Quantite
+            // 
+            this.Quantite.DataPropertyName = "QUANTITÉ";
+            this.Quantite.HeaderText = "Quantité";
+            this.Quantite.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.Quantite.MinimumWidth = 6;
+            this.Quantite.Name = "Quantite";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "IDPRESTATION";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id Prestation";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "LIBELLE";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Libelle";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "PRIX";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Prix";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "TVA";
+            this.dataGridViewTextBoxColumn4.HeaderText = "TVA";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
             // box_montanttotal
             // 
             this.box_montanttotal.Font = new System.Drawing.Font("Comic Sans MS", 10.2F);
@@ -332,54 +380,6 @@ namespace Autofact
             this.box_adresse.ReadOnly = true;
             this.box_adresse.Size = new System.Drawing.Size(133, 31);
             this.box_adresse.TabIndex = 41;
-            // 
-            // Quantite
-            // 
-            this.Quantite.DataPropertyName = "QUANTITÉ";
-            this.Quantite.HeaderText = "Quantité";
-            this.Quantite.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.Quantite.MinimumWidth = 6;
-            this.Quantite.Name = "Quantite";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IDPRESTATION";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id Prestation";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "LIBELLE";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Libelle";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "PRIX";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Prix";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "TVA";
-            this.dataGridViewTextBoxColumn4.HeaderText = "TVA";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // Document
             // 

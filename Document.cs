@@ -32,6 +32,7 @@ namespace Autofact
             sqlDa.Fill(dtbl);
 
             dgvpresta.DataSource = dtbl;
+
         }
         private void displayDataClient()      //Permet d'actualiser automatiquement le DGV afin de voir les nouveaux clients 
         {
@@ -53,6 +54,8 @@ namespace Autofact
             box_adresse.Clear();
             IDCli = 0;
             Qtt = 0;
+            displayDataClient();
+            displayDataPresta();
         }
 
         private void dgvpresta_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -77,7 +80,10 @@ namespace Autofact
             double somme = 0;
             foreach (DataGridViewRow row in dgvpresta.Rows)
             {
-               somme += Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
+                if (row.Cells[0].Value != null && int.Parse(row.Cells[0].Value.ToString()) != 0)
+                {
+                    somme += Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
+                }
             }
 
             box_montanttotal.Text = somme.ToString();
@@ -109,11 +115,11 @@ namespace Autofact
             //fin
 
 
-            if (IDCli != 0 && comboBoxType.SelectedItem != null && TypeText == "Facture")
+            if (IDCli != 0 && Qtt != 0 && comboBoxType.SelectedItem != null && TypeText == "Facture")
             {
                 WordDocument document = new WordDocument();
 
-                Stream docStream = File.OpenRead(Path.GetFullPath(@"../../../AutoFact/template/facture_template.doc"));
+                Stream docStream = File.OpenRead(Path.GetFullPath(@"template/facture_template.doc"));
                 document.Open(docStream, Syncfusion.DocIO.FormatType.Doc);
                 docStream.Dispose();
 
@@ -133,20 +139,14 @@ namespace Autofact
                 int idtype = int.Parse(type.ExecuteScalar().ToString());
 
 
-                string insertDocument = "INSERT INTO `document`(`IDUTILISATEUR`, `IDCLIENT`, `NUMERO`) VALUES ('" + idu + "','" + IDCli + "',0001);";
-                string insertDevenir = "INSERT INTO `devenir`(`IDDOCUMENT`, `IDTYPE`, `DATEDOC`) VALUES (LAST_INSERT_ID(), '" + idtype + "','" + DateTime.Now.ToString(format) + "');";
+                string insertDocument = "INSERT INTO `document`(`IDUTILISATEUR`, `IDCLIENT`, `NUMERO`) VALUES ('" + idu + "','" + IDCli + "',0001); SELECT LAST_INSERT_ID();";
+                string insertDevenir = "INSERT INTO `devenir`(`IDDOCUMENT`, `IDTYPE`, `DATEDOC`) VALUES (LAST_INSERT_ID(), '" + idtype + "','" + DateTime.Now.ToString(format) + "'); ";
                 MySqlCommand cmd = new MySqlCommand(insertDocument, conn);
                 cmd.ExecuteNonQuery();
                 MySqlCommand cmd2 = new MySqlCommand(insertDevenir, conn);
                 cmd2.ExecuteNonQuery();
 
-                //IdDocument
-                string SelectId = "SELECT `IDDOCUMENT` FROM `document` WHERE IDUTILISATEUR= '" + idu + "' AND IDCLIENT=(SELECT IDCLIENT FROM Clients WHERE NOM = '" + box_nom.Text + "')";
-                MySqlCommand iddocument = new MySqlCommand(SelectId, conn);
-                int IdDocument = int.Parse(iddocument.ExecuteScalar().ToString());
-
-               
-
+                int IdDocument = int.Parse(cmd.ExecuteScalar().ToString());
 
                 BookmarksNavigator bookmarkNavigator = new BookmarksNavigator(document);
                 bookmarkNavigator.MoveToBookmark("tableau");
@@ -175,52 +175,59 @@ namespace Autofact
                 cell1.AddParagraph().AppendText("Prix Total (€)");
 
                 double sommetotalht = 0;
-
+                double tvatotal = 0;
                 
                 foreach (DataGridViewRow row in dgvpresta.Rows)
                 {
-                    WTableRow az = table.AddRow(true, false);
-                    WTableCell cell = az.AddCell();
 
-                    cell.AddParagraph().AppendText(row.Cells[0].Value.ToString());
-                    cell = az.AddCell();
+                    if (row.Cells[0].Value != null && int.Parse(row.Cells[0].Value.ToString()) != 0) { 
+                        WTableRow az = table.AddRow(true, false);
+                        WTableCell cell = az.AddCell();
 
-                    cell.AddParagraph().AppendText(row.Cells[2].Value.ToString());
-                    cell = az.AddCell();
+                        cell.AddParagraph().AppendText(row.Cells[0].Value.ToString());
+                        cell = az.AddCell();
 
-                    cell.AddParagraph().AppendText(row.Cells[3].Value.ToString());
-                    cell = az.AddCell();
+                        cell.AddParagraph().AppendText(row.Cells[2].Value.ToString());
+                        cell = az.AddCell();
 
-                    cell.AddParagraph().AppendText(row.Cells[4].Value.ToString());
-                    cell = az.AddCell();
+                        cell.AddParagraph().AppendText(row.Cells[3].Value.ToString());
+                        cell = az.AddCell();
 
-                    double sommeparpresta = Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
+                        cell.AddParagraph().AppendText(row.Cells[4].Value.ToString());
+                        cell = az.AddCell();
 
-                    cell.AddParagraph().AppendText(sommeparpresta.ToString());
+                        double sommeparpresta = Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
 
-                    bookmarkNavigator.InsertTable(table);
-                    document.Replace("#tableau#", "", true, true);
+                        cell.AddParagraph().AppendText(sommeparpresta.ToString());
+
+                        bookmarkNavigator.InsertTable(table);
+                        document.Replace("#tableau#", "", true, true);
 
 
 
-                    sommetotalht += Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
-                    
+                        sommetotalht += Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
 
-                    string insertConserve = "INSERT INTO `conserve`(`IDDOCUMENT`, `IDPRESTATION`, `QUANTITÉ`) VALUES (LAST_INSERT_ID(), '" + row.Cells[1].Value.ToString() + "', '" + row.Cells[0].Value.ToString() + "');";
-                    MySqlCommand cmd1 = new MySqlCommand(insertConserve, conn);
-                    cmd1.ExecuteNonQuery();
-                    
+                        tvatotal += Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString()) * (Convert.ToDouble(row.Cells[4].Value.ToString()) / 100);
+
+
+
+
+                        string insertConserve = "INSERT INTO `conserve`(`IDDOCUMENT`, `IDPRESTATION`, `QUANTITÉ`) VALUES (LAST_INSERT_ID(), '" + row.Cells[1].Value.ToString() + "', '" + row.Cells[0].Value.ToString() + "');";
+                        MySqlCommand cmd1 = new MySqlCommand(insertConserve, conn);
+                        cmd1.ExecuteNonQuery();
+
+                    }
                 }
                 document.Replace("#totalht#", sommetotalht.ToString(), true, true);
 
-                double tvatotal = sommetotalht * 0.2;
+                
                 document.Replace("#tvatotal#", tvatotal.ToString(), true, true);
 
                 double totalttc = sommetotalht + tvatotal;
                 document.Replace("#totalttc#", totalttc.ToString(), true, true);
 
                 //Convert TO PDF
-                string pathFacture = @"../../../AutoFact/Devis-Facture/AutoEntrepreneur - " + nomuser + @"/" + box_nom.Text + "_" + box_prenom.Text + @"/Factures\Facture N°" + IdDocument + " " + DateTime.Now.ToString("dd-MM-yyyy-HH-mm") + ".pdf";
+                string pathFacture = @"Devis-Facture/AutoEntrepreneur - " + nomuser + @"/" + box_nom.Text + "_" + box_prenom.Text + @"/Factures\Facture N°" + IdDocument + " " + DateTime.Now.ToString("dd-MM-yyyy-HH-mm") + ".pdf";
                 // Si le dossier n'est pas crée, le faire
                 document.ChartToImageConverter = new ChartToImageConverter();
                 DocToPDFConverter converter = new DocToPDFConverter();
@@ -239,7 +246,7 @@ namespace Autofact
             {
                 WordDocument document = new WordDocument();
 
-                Stream docStream = File.OpenRead(Path.GetFullPath(@"../../../AutoFact/template/devis_template.doc"));
+                Stream docStream = File.OpenRead(Path.GetFullPath(@"template/devis_template.doc"));
                 document.Open(docStream, Syncfusion.DocIO.FormatType.Doc);
                 docStream.Dispose();
 
@@ -302,60 +309,68 @@ namespace Autofact
                 cell1.AddParagraph().AppendText("Prix Total (€)");
 
                 double sommetotalht = 0;
+                double tvatotal = 0;
 
                 foreach (DataGridViewRow row in dgvpresta.Rows)
                 {
-                    WTableRow az = table.AddRow(true, false);
-                    WTableCell cell = az.AddCell();
+                    if (row.Cells[0].Value != null && int.Parse(row.Cells[0].Value.ToString()) != 0)
+                    {
+                        WTableRow az = table.AddRow(true, false);
+                        WTableCell cell = az.AddCell();
 
-                    cell.AddParagraph().AppendText(row.Cells[0].Value.ToString());
-                    cell = az.AddCell();
+                        cell.AddParagraph().AppendText(row.Cells[0].Value.ToString());
+                        cell = az.AddCell();
 
-                    cell.AddParagraph().AppendText(row.Cells[2].Value.ToString());
-                    cell = az.AddCell();
+                        cell.AddParagraph().AppendText(row.Cells[2].Value.ToString());
+                        cell = az.AddCell();
 
-                    cell.AddParagraph().AppendText(row.Cells[3].Value.ToString());
-                    cell = az.AddCell();
+                        cell.AddParagraph().AppendText(row.Cells[3].Value.ToString());
+                        cell = az.AddCell();
 
-                    cell.AddParagraph().AppendText(row.Cells[4].Value.ToString());
-                    cell = az.AddCell();
+                        cell.AddParagraph().AppendText(row.Cells[4].Value.ToString());
+                        cell = az.AddCell();
 
-                    double sommeparpresta = Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
-                    cell.AddParagraph().AppendText(sommeparpresta.ToString());
-
-
-                    document.Replace("#tableau#", "", true, true);
-                    bookmarkNavigator.InsertTable(table);
+                        double sommeparpresta = Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
+                        cell.AddParagraph().AppendText(sommeparpresta.ToString());
 
 
-                    sommetotalht += Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
+                        document.Replace("#tableau#", "", true, true);
+                        bookmarkNavigator.InsertTable(table);
 
-                    
 
-                    string insertConserve = "INSERT INTO `conserve`(`IDDOCUMENT`, `IDPRESTATION`, `QUANTITÉ`) VALUES (LAST_INSERT_ID(), '" + row.Cells[1].Value.ToString() + "', '" + row.Cells[0].Value.ToString() + "');";
-                    MySqlCommand cmd1 = new MySqlCommand(insertConserve, conn);
-                    cmd1.ExecuteNonQuery();
+                        sommetotalht += Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString());
+                        tvatotal += Convert.ToDouble(row.Cells[3].Value.ToString()) * int.Parse(row.Cells[0].Value.ToString()) * (Convert.ToDouble(row.Cells[4].Value.ToString()) / 100);
+
+
+
+
+                        string insertConserve = "INSERT INTO `conserve`(`IDDOCUMENT`, `IDPRESTATION`, `QUANTITÉ`) VALUES (LAST_INSERT_ID(), '" + row.Cells[1].Value.ToString() + "', '" + row.Cells[0].Value.ToString() + "');";
+                        MySqlCommand cmd1 = new MySqlCommand(insertConserve, conn);
+                        cmd1.ExecuteNonQuery();
+
+
+                    }
                 }
                 document.Replace("#totalht#", sommetotalht.ToString(), true, true);
                 
-                double tvatotal = sommetotalht * 0.2;
+               
                 document.Replace("#tvatotal#", tvatotal.ToString(), true, true);
 
                 double totalttc = sommetotalht + tvatotal;
                 document.Replace("#totalttc#", totalttc.ToString(), true, true);
 
                 //Convert TO PDF
-                string pathFacture = @"../../../AutoFact/Devis-Facture/AutoEntrepreneur - " + nomuser + @"/" + box_nom.Text + "_" + box_prenom.Text + @"/Devis/Devis N°" + IdDocument + " " + DateTime.Now.ToString("dd-MM-yyyy-HH-mm") + ".pdf";
+                string pathDevis = @"Devis-Facture/AutoEntrepreneur - " + nomuser + @"/" + box_nom.Text + "_" + box_prenom.Text + @"/Devis\Devis N°" + IdDocument + " " + DateTime.Now.ToString("dd-MM-yyyy-HH-mm") + ".pdf";
                 // If directory does not exist, create it.
                 document.ChartToImageConverter = new ChartToImageConverter();
                 DocToPDFConverter converter = new DocToPDFConverter();
                 PdfDocument pdfdocument = converter.ConvertToPDF(document);
-                pdfdocument.Save(pathFacture);
+                pdfdocument.Save(pathDevis);
                 docStream.Dispose();
                 //Fin Convert TO PDF
 
                 //Ouverture PDF
-                System.Diagnostics.Process.Start(pathFacture);
+                System.Diagnostics.Process.Start(pathDevis);
 
 
                 MessageBox.Show("Devis en Word généré !", "Success", MessageBoxButtons.OK);
@@ -367,5 +382,7 @@ namespace Autofact
             }
 
         }
+
+
     }
 }
